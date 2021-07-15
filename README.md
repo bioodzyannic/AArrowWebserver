@@ -1,6 +1,6 @@
 # AArrowWebserver
 
-INSTALLATION:
+#INSTALLATION
 
 1. set up passwordless ssh to aarrow.app
 2. clone repo locally
