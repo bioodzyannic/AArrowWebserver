@@ -4,6 +4,10 @@ h1,h2{
 h3,h4{
     font-family: "tahoma-bold";
 }
+.wheel-container{
+    position: relative;
+    margin-bottom: 5vh;
+}
 
 .arrow-container{
     display: flex;
@@ -235,7 +239,7 @@ p, label {
     margin-bottom: 5vh;
 }
 .shift-header h1{
-    font-family: 'tahoma';
+    font-family: 'tahoma-bold';
     text-align: center;
 }
 .shift-header h3{
@@ -261,23 +265,21 @@ padding: 20px;
     margin: 3% auto;
 }
 .timer-wheel hr{
-    width: 40vw;
+    width: 60vw;
+    max-width: 250px;
 }
 .timer-wheel p{
     margin: 0;
     font-size: 8vw;
-    font-family: sans-serif;
+    font-family: 'tahoma-bold';
 }
 .timer-wheel{
-    border: solid 15px #cacaca;
-    border-radius: 60%;
     text-align: center;
-    height: 60vw;
-    width: 60vw;
-    display: grid;
-    place-content: center;
-    margin: auto;
-    font-family: sans-serif;
+    font-family: 'tahoma';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
 }
 
 .grid-2{
@@ -518,6 +520,7 @@ form.feedback input[type="submit"]{
 }
 .pop-info-container h3{
     margin-top: 0;
+    text-align: center;
 }
 p, label{
     font-family: 'tahoma';
@@ -552,6 +555,42 @@ p, label{
     color: #fff;
     padding: 6px 10px;
     width: 25px;
+}
+.progress-ring-container {
+    margin-bottom: 10px;
+    /* position: absolute; */
+    top: 25px;
+    right: 15px;
+}
+
+.progress-ring {
+    position: absolute;
+    right: 50%;
+    z-index: 1;
+    stroke: #3e9846;
+    stroke-width: 10px;
+    transform: translate(50%, 0px);
+    stroke-linecap: round;
+    width: 320px;
+    height: 320px;
+}
+
+.progress-ring__circle {
+    transition: 0.35s stroke-dashoffset;
+    transform: rotate(
+-90deg
+);
+    /* transform-origin: 12px 0px; */
+}
+.track {
+    position: absolute;
+    right: 50%;
+    z-index: 0;
+    stroke: #e0e0e0;
+    stroke-width: 10px;
+    transform: translate(50%, 0px);
+    width: 320px;
+    height: 320px;
 }
 
 /* Extra small devices (phones, less than 768px) */
