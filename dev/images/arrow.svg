@@ -1,0 +1,45 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 619 170" style="enable-background:new 0 0 619 170;" xml:space="preserve" width="440px">
+<style type="text/css">
+	.st0{fill:#E6E6E6;}
+	.st1{fill:#FFFFFF;}
+	.st2{fill:#DCDCDC;}
+	.st3{fill:#E6242A;}
+	.st4{fill:none;}
+	.st5{font-family:'MyriadPro-Regular';}
+	.st6{font-size:40px;}
+	.st7{font-size:20px;}
+</style>
+<g>
+	<path class="st0" d="M475,170H39.4C17.6,170,0,152.4,0,130.6V47.4C0,25.6,17.6,8,39.4,8H475l144,81L475,170z"/>
+</g>
+<g>
+	<path class="st1" d="M39.4,161C18.2,161,1,143.8,1,122.6V39.4C1,18.2,18.2,1,39.4,1h435.4L617,81l-142.2,80H39.4z"/>
+	<path class="st2" d="M474.5,2l140.4,79l-140.4,79H39.4C18.8,160,2,143.2,2,122.6V39.4C2,18.8,18.8,2,39.4,2H474.5 M475,0H39.4
+		C17.6,0,0,17.6,0,39.4v83.3C0,144.4,17.6,162,39.4,162H475l144-81L475,0L475,0z"/>
+</g>
+<g>
+	<path class="st3" d="M471.1,146.8H43c-14.4,0-26-11.7-26-26V41.3c0-14.4,11.7-26,26-26h428L588,81L471.1,146.8z"/>
+</g>
+<g>
+	<path class="st1" d="M128.7,150H41.3c-15.2,0-27.6-12.4-27.6-27.6V39.6C13.6,24.4,26,12,41.3,12h87.5c15.2,0,27.6,12.4,27.6,27.6
+		v82.8C156.4,137.6,144,150,128.7,150z"/>
+</g>
+<g>
+	<g>
+		<path class="st2" d="M127,17.2c13.3,0,24,10.8,24,24v79.4c0,13.3-10.8,24-24,24H43c-13.3,0-24-10.8-24-24V41.3
+			c0-13.3,10.8-24,24-24H127 M127,15.2H43c-14.4,0-26,11.7-26,26v79.4c0,14.4,11.7,26,26,26H127c14.4,0,26-11.7,26-26V41.3
+			C153,26.9,141.3,15.2,127,15.2L127,15.2z"/>
+	</g>
+</g>
+<g>
+	<path class="st2" d="M127,147H43c-14.4,0-26-11.7-26-26c74.3-0.7,110-36.8,110-105.5c14.4,0,26,11.7,26,26V121
+		C153,135.3,141.3,147,127,147z"/>
+</g>
+<rect x="38.1" y="46.4" class="st4" width="98.2" height="77.8"/>
+<text transform="matrix(1 0 0 1 47.1431 74.8438)"><tspan x="0" y="0" class="st5 st6">WED</tspan><tspan x="2.4" y="40" class="st5 st6">6/15</tspan></text>
+<text transform="matrix(1 0 0 1 165.3335 49.064)" class="st1 st5 st7">ARNALDO ACOSTA ZAPAGLIONI</text>
+<text transform="matrix(1 0 0 1 165.3335 75.3973)" class="st1 st5 st7">START TIME END TIME</text>
+<text transform="matrix(1 0 0 1 165.3335 101.7306)" class="st1 st5 st7">123 MY JOB SITE RD.</text>
+<text transform="matrix(1 0 0 1 165.3335 128.064)" class="st1 st5 st7">3.CALL TO SCHEDULE</text>
+</svg>
