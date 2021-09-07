@@ -520,7 +520,7 @@ form.feedback input[type="submit"]{
     margin-top: 0;
 }
 p, label{
-    font-family: 'tahomaRegular';
+    font-family: 'tahoma';
 }
 .cell{
     padding: 20px;
