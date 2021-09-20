@@ -163,7 +163,7 @@ p, label {
 .mobile-viewport{
 }
 .shift-header{
-    margin-bottom: 5vh;
+    margin-bottom: 2vh;
 }
 .shift-header h1{
     font-family: 'tahoma-bold';
@@ -201,12 +201,13 @@ padding: 20px;
 .timer-wheel hr{
     width: 60vw;
     max-width: 180px;
+    margin: 10px 0px;
 }
 .timer-wheel p{
     margin: 0;
     /* font-size: 8vw; */
     font-family: 'tahoma-bold';
-    font-size: clamp(1rem, 8vw, 2rem);
+    font-size: clamp(1rem, 8vw, 1.6rem);
 }
 .timer-wheel{
     text-align: center;
@@ -217,13 +218,7 @@ padding: 20px;
     transform: translate(-50%, -45%);
 }
 
-.grid-2{
-margin: 3vh 0;
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-row-gap: 5vh;
-}
+.grid-2{margin: 3vh 0;display: flex;flex-wrap: wrap;justify-content: space-between;row-gap: 2vh;}
 .btn-row button{
     gap: 0px;
     font-size: medium;
@@ -263,7 +258,7 @@ b{
 .aa-btn.dark-grey, .spec .title.dark-grey{background-color: #696969;}
 .aa-btn .icon{width: 30px;}
 .btn-row .icon{
-    width: 45px;
+    width: 34px;
 }
 .row{
     margin-left: 0!important;
@@ -410,7 +405,7 @@ th{
     width: 100%;
 }
 .locations{
-    max-height: 75vh;
+    max-height: 80vh;
     overflow-y: scroll;
     padding: 10px;
     padding-bottom: 0;
@@ -498,7 +493,7 @@ form.feedback input[type="submit"]{
 .report h2{font-size: xx-large;}
 
 /*Shift Pop-ups*/
-.pop-info-container{background-color: #fff;min-height: 100px;margin: 50vh 30px;transform: translate(0 ,-50%);border-radius: 5px;padding: 25px;max-height: 90vh;overflow-y: scroll;position: relative;}
+.pop-info-container{background-color: #fff;min-height: 100px;margin: 47vh 20px;transform: translate(0 ,-47%);border-radius: 5px;padding: 25px;max-height: 93vh;overflow-y: scroll;position: relative;}
 .pop-container{
     position: fixed;
     z-index: 1;
@@ -529,7 +524,7 @@ p, label{
     width: 100%;
 }
 .shift-specs{
-    margin: 3vh 0;
+    margin: 2vh 0;
 }
 
 .signature-canvas{
@@ -537,14 +532,8 @@ p, label{
     height: 70px;
 }
 .exit{
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-family: 'tahoma';
-    /* background-color: red; */
-    color: #fff;
-    padding: 6px 10px;
     width: 25px;
+    float: right;
 }
 .progress-ring-container {
     margin-bottom: 10px;
