@@ -323,6 +323,7 @@ p, label {
 .btn-row button{
     gap: 0px;
     font-size: medium;
+    padding: 5px;
 }
 .user-options{
     display: flex;
