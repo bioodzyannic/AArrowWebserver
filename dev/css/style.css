@@ -2,6 +2,10 @@ h1,h2{
     /* font-family: 'td'; */
     font-family: 'tahoma-bold';
 }
+.main-content h1{
+    color: #fff;
+}
+
 h3,h4{
     font-family: "tahoma-bold";
 }
@@ -10,11 +14,23 @@ h3,h4{
   width: 100%;
   display: block!important;
 }
+.menu-bar .logo{
+    height: 100%;
+    width: 25%;
+}
+.menu-bar .logo img{
+    height: 100%;
+    display: block;
+}
 .row {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    margin-left: 0!important;
+    margin-right: 0!important;
+    /* width: 100%; */
+    gap: 0;
 }
 .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
     position: relative;
@@ -82,12 +98,11 @@ h3,h4{
 }
 .col-md-12,.col-12 {
     -ms-flex: 0 0 calc(var(--col)*12);
-    flex: 0 0 calc(var(--col)*12);
-    max-width: calc(var(--col)*12);
+    /* flex: 0 0 calc(var(--col)*12); */
+    /* max-width: calc(var(--col)*12); */
 }
 .wheel-container{
     position: relative;
-    margin-bottom: 5vh;
 }
 
 .arrow-container{
@@ -155,7 +170,6 @@ body{
     margin:0;
 }
 .container-fluid{
-  width: 100%;
   display: block!important;
   width: 100%;
   padding-right: 0px!important;
@@ -164,14 +178,18 @@ body{
   margin-left: auto;
 }
 
-.filter-bar{
-    min-height: 6vh;
-    background-color: #e6242a;
-    width: 100%;
+.menu-bar{
+    height: 6vh;
+    background-color: #ffffff;
     margin: 0;
     display: flex;
     align-items: center;
-    padding: 0 15px;
+    padding: 10px 3%;
+    border-bottom: solid 5px #e6242a;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    justify-content: space-between;
 }
 .arrow-holder{}
 .spin01{
@@ -224,13 +242,17 @@ body{
     min-height: 94vh;
     max-height: 94vh;
     overflow-y: scroll;
+    padding: 3%;
 }
 .main-menu .logo{margin: auto;display: block;width: 60%;}
-.main-options{
+.menu-options{
     padding: 0;
     text-align: center;
     list-style: none;
-    font-family: td;
+    display: flex;
+    gap: 40px;
+    width: 55%;
+    justify-content: end;
 }
 .main-options li{
     margin-bottom: 10px;
@@ -248,10 +270,13 @@ p, label {
 .shift-header h1{
     font-family: 'tahoma-bold';
     text-align: center;
+    margin: 0;
+    font-size: 1.5em;
 }
 .shift-header h3{
     font-family: 'tahoma';
     text-align: center;
+    margin: 0;
 }
 .pattern-bg{
     background-image: url('../images/pattern.svg');
@@ -266,11 +291,7 @@ p, label {
     background-color: #000;
 }
 
-.mobile .info-container{
-background-color: #fff;
-min-height: 100vh;
-padding: 20px;
-}
+.mobile .info-container{background-color: #fff;min-height: 100vh;padding: 10px;}
 
 .mobile-frame{
     width: 406px;
@@ -298,14 +319,44 @@ padding: 20px;
     transform: translate(-50%, -45%);
 }
 
-.grid-2{margin: 3vh 0;display: flex;flex-wrap: wrap;justify-content: space-between;row-gap: 2vh;}
+.grid-2{/* margin: 3vh 0; */display: flex;flex-wrap: wrap;justify-content: space-between;row-gap: 2vh;}
 .btn-row button{
     gap: 0px;
     font-size: medium;
 }
+.user-options{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.user-options div{
+    background-color: #545454;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+}
+.main-content .spec{
+    text-align: left;
+    max-width: unset;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px #e6242a;
+    padding: 7px 0px;
+}
+.main-content .spec label{/* font-size: small; *//* color: #acacac; */}
+.main-content .spec .value{
+    font-family: 'tahoma-bold';
+}
 .grid-2 .spec{
     
 width: calc(50% - 20px);
+}
+.specs{
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* gap: 10PX; */
+    font-size: 14px;
+    width: 50%;
 }
 
 /* End of Mobile Shift */
@@ -341,8 +392,6 @@ b{
     width: 34px;
 }
 .row{
-    margin-left: 0!important;
-    margin-right: 0!important;
 }
 .no-pad-row{
     padding: 0!important;
@@ -355,7 +404,7 @@ b{
 .data{
     background-color: #E2E2E2;
     margin: 0 10px;
-    font-size: 1.5em;
+    font-size: 1.3em;
     color: #4e4e4e;
 }
 .aarrow-table-01, .aarrow-table-01 tr, .aarrow-table-01 td{
@@ -605,7 +654,7 @@ p, label{
     width: 100%;
 }
 .shift-specs{
-    margin: 2vh 0;
+    /* margin: 2vh 0; */
 }
 
 .signature-canvas{
@@ -681,8 +730,11 @@ p, label{
     display: block;
     margin-bottom: 20px;
 }
-a{
-    font-family: 'tahoma';
+.menu-options a{
+    font-family: 'tahoma-bold';
+    font-size: 15px;
+    /* text-decoration: unset; */
+    color: #000;
 }
 .login-container a{
     color: #fff;
@@ -691,7 +743,9 @@ a{
     margin: 10px 0;
 }
 #map{
-    max-height: 94vh;
+    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
 }
 .filter-bar input[name="date"]{
     background-color: unset;
@@ -715,8 +769,9 @@ a{
     border-radius: 60px;
 }
 .main-content::-webkit-scrollbar {
-    width: 10px;
+    width: 7px;
     height: 10px;
+    margin-right: 5px;
 }
 .main-content::-webkit-scrollbar-track {
     background: #313131;
@@ -725,26 +780,38 @@ a{
 }
 
 .main{
-    min-height: 94vh;
+    min-height: 97vh;
+}
+.stripeBG {
+    background-image: url(https://aarrowsignspinners.com/wp-content/themes/aarrow-theme/images/diagonal.svg);
+    background-repeat: round;
+    background-size: 7px;
 }
 
 .state{
-    background-color: #1c1c1c;
+    background-color: #181818d1;
     margin: 10px 0;
     display: flex;
-    padding: 20px;
+    padding: 20px 30px;
     border: solid 2px #3d3d3d;
     justify-content: space-between;
     color: #fff;
+    cursor: pointer;
+    transition: all 0.1s;
+    border-radius: 5px;
+    align-items: center;
+}
+.state:hover{
+    background-color: hsl(0deg 0% 20% / 80%);
+    border: solid 2px #ffffff;
 }
 .state h4{
     color: #fff;
-    font-size: larger;
     margin: 0;
-    /* width: 50%; */
+    width: 50%;
 }
 .state>*{
-    width: 33%;
+    /* width: 33%; */
     font-family: 'tahoma-bold';
 }
 /* Extra small devices (phones, less than 768px) */
