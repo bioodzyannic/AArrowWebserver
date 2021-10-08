@@ -1,11 +1,11 @@
-<?php include 'inc/header.php'; ?>
+<?php include '../inc/header.php'; ?>
 
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12 no-pad-row">
 			<!--Menu-->
 			<div class="menu-container">			
-				<?php include 'inc/main-menu.php'; ?>
+				<?php include '../inc/main-menu.php'; ?>
 			</div>
 			<!--End of Menu-->
 			<div class="row main">
@@ -19,7 +19,7 @@
 					</div>
 					<?php 
 						foreach ($states as $key => $value) {?>
-						<a class="single" href="/city-shifts.php?state=<?php echo strtolower(str_replace(' ', '-', $value)); ?>">
+						<a class="single" href="./city-shifts.php?state=<?php echo strtolower(str_replace(' ', '-', $value)); ?>">
 							<h4><?php echo $value; ?></h4>
 							<div class="specs">
 								<div class="spec">
@@ -58,9 +58,6 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="js/map.js"></script>
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcfMA8gM8H9EFwRjon01dT63iN-7uI1a4&callback=initMap">
-</script>
 
-<?php include 'footer.php'; ?>
+
+<?php include '../inc/footer.php'; ?>
