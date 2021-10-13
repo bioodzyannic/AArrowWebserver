@@ -1,7 +1,21 @@
-<img src="../images/logo.png" class="logo">
-<ul class="main-options">
-	<li><a href="#">Shifts</a></li>
-	<li><a href="#">Spinners</a></li>
-	<li><a href="#">Shop</a></li>
-	<li><a href="#">Managers</a></li>
-</ul>
+	<div class="top-menu stripeBG">
+		<div>
+			<div class="logo">
+				<img src="../images/logo.svg" class="">
+			</div>
+			<ul class="menu-options">
+				<li><a href="/">Home</a></li>
+				
+			</ul>
+		</div>
+		<div class="user-options">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	
+		
+	
+	
+
