@@ -252,7 +252,7 @@ small{
     width: 100%;
 }
 .search-bar h2{margin:0;}
-.spinner-pic{max-width: 250px;}
+.spinner-pic{max-width: 60px;}
 .search-bar form >*{
     width: 15%;
 }
