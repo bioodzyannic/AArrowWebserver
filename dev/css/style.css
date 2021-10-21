@@ -216,7 +216,7 @@ small{
     max-width: 200px;
 }
 .report{
-    /* overflow-y: scroll; */
+    min-height: 85vh;
 }
 .search-bar form {
     min-height: 64px;
@@ -714,8 +714,7 @@ b{
 .btn-row .icon{
     width: 34px;
 }
-.row{
-}
+.row{}
 .aa-box{
     border: solid 1px #cacaca;
     border-radius: 5px;
@@ -827,6 +826,7 @@ b{
     padding: 3%;
     max-height: 100%;
     /* overflow-y: scroll; */
+    /* min-height: 72vh; */
 }
 .locations-container h1{
     margin-bottom: 0;
