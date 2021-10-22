@@ -924,7 +924,7 @@ form.feedback input[type="submit"]{
 }
 }
 .spinners-container{
-    /* overflow-x: scroll; */
+    overflow-x: scroll!important;
 }
 .single.location .spec>*{
     display: flex;
