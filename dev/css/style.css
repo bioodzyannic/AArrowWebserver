@@ -1252,8 +1252,9 @@ overflow: hidden;
 .box-collapse .inline-info{
     cursor: pointer;
 }
-.box-collapse .inline-info>* {width: 25%;}
-.box-collapse .inline-info>*:first-child {width: 35%;}
+.box-collapse .inline-info>* {width: 20%;}
+.box-collapse .inline-info>*:first-child {width: 40%;}
+[data-open="0"] .spinners-container{overflow-x: hidden!important;}
 .inline-info>*{
     border-right: solid 1px #cacaca;
     padding: 0 20px;
