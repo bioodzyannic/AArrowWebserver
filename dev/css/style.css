@@ -970,7 +970,6 @@ form.feedback input[type="submit"]{
     /* gap: 20px; */
     align-items: center;
     position: relative;
-    /* cursor: pointer; */
 }
 .location-gallery{
     column-gap: 10px;
@@ -1243,13 +1242,18 @@ border-color: #e6242a!important;
     padding: 25px;
 }
 [data-open="1"] .info-collapse{
-    max-height: 1000vh;
-    padding: 0!important;
-    overflow: hidden;
+    
+max-height: 1000vh;
+    
+padding: 0!important;
+    
+overflow: hidden;
 }
 .box-collapse .inline-info{
     cursor: pointer;
 }
+.box-collapse .inline-info>* {width: 25%;}
+.box-collapse .inline-info>*:first-child {width: 35%;}
 .inline-info>*{
     border-right: solid 1px #cacaca;
     padding: 0 20px;
@@ -1257,6 +1261,7 @@ border-color: #e6242a!important;
 }
 .inline-info>*:first-child{
     padding-left: 0;
+    /* width: 30%; */
 }
 .inline-info>*:last-child{
     border-right: navajowhite;
