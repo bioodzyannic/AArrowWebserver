@@ -397,10 +397,9 @@ input,select {
 }
 .main-content{
     background-color: #000000;
-    min-height: 94vh;
+    min-height: 100vh;
     max-height: 94vh;
     overflow-y: scroll;
-    padding: 3%;
     transition: all 1s;
 }
 .main-menu .logo{margin: auto;display: block;width: 60%;}
@@ -515,7 +514,7 @@ p, label {
 
 .pattern-bg-dark{
     background-image: url('../images/pattern-dark.svg');
-    min-height: 100vh;
+    /* min-height: 100vh; */
     padding: 30px;
     background-color: #222;
 }
@@ -556,17 +555,63 @@ p, label {
 }
 .user-options{
     display: flex;
-    gap: 10px;
+    gap: 5px;
     align-items: center;
     justify-content: end;
 }
-.user-options div{
-    background-color: #545454;
-    width: 30px;
-    height: 30px;
+.user-options .user-option{
+    /* background-color: #545454; */
+    width: 25px;
+    height: 25px;
     border-radius: 20px;
+    padding: 6px;
+    border: solid 2px #cacaca00;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+.user-option:hover{
+    background-color: #d2d2d24d;
+}
+.apps-container{
+    width: 250px;
+    height: 250px;
+    background-color: white;
+    position: absolute;
+    border: solid 2px #4e4e4e;
+    border-radius: 5px;
+    right: 0;
+    top: 50px;
+    cursor: default;
+    z-index: 2;
+    box-shadow: 0 2px 7px 1px rgb(0 0 0 / 30%);
+    overflow-y: scroll;
+    display: none;
+}
+.user-option[data-open="1"]{
+    background-color: #d2d2d24d;
     border: solid 2px #cacaca;
 }
+.user-option[data-open="1"] .apps-container{
+    display: block;
+}
+
+.apps-container::-webkit-scrollbar {
+    width: 7px;
+    height: 10px;
+    margin-right: 5px;
+}
+.apps-container::-webkit-scrollbar-thumb {
+    background: #e6242a;
+    /* border: solid 1px #fff; */
+    border-radius: 60px;
+}
+.apps-container::-webkit-scrollbar-track {
+    background: #e8e8e8;
+    /* border: solid 1px #fff; */
+    margin: 10px;
+}
+
 .main-content .spec, .aa-marker-info .spec, .extra-info-col .spec{
     text-align: left;
     max-width: unset;
@@ -578,6 +623,10 @@ p, label {
 }
 .aa-marker-info .spec{
     border:none;
+}
+.aarrow-table-01 tbody{
+    /* max-height: 300px; */
+    /* overflow-y: scroll; */
 }
 .aa-marker-info .event{
     width: auto;
@@ -768,6 +817,7 @@ b{
     background-size: 20px 20px;
     background-position: 0 0, 30px 30px;
     background-repeat: repeat;
+    min-height: 100vh;
 }
 .report-left-col,.report-right-col{
     /* height: inherit; */
@@ -849,6 +899,8 @@ table {
   width: 100%;
   border-collapse: collapse;
   font-family: 'tahoma';
+  /* max-height: 300px; */
+  /* overflow-y: scroll; */
 }
 th{
     color: #fff;
@@ -1144,6 +1196,22 @@ p, label{
     margin: 10px;
 }
 
+.extra-info-col::-webkit-scrollbar-thumb {
+    background: #e6242a;
+    /* border: solid 1px #fff; */
+    border-radius: 60px;
+}
+.extra-info-col::-webkit-scrollbar {
+    width: 7px;
+    height: 10px;
+    margin-right: 5px;
+}
+.extra-info-col::-webkit-scrollbar-track {
+    background: #d7d7d7;
+    /* border: solid 1px #fff; */
+    margin: 10px;
+}
+
 .main{
     min-height: 97vh;
     position: relative;
@@ -1165,23 +1233,37 @@ p, label{
 span{
     font-family: sans-serif;
 }
+.main-content .search-options input{
+    width: 100%;
+    height: 4ch;
+    margin-bottom: 10px;
+}
+.main-content .search-options label{
+    color: #fff;
+    margin-bottom: 10px;
+    display: block;
+}
+
 .search-options input{
     width: 100%;
     height: 4ch;
     margin-bottom: 10px;
 }
 .search-options label{
-    color: #fff;
     margin-bottom: 10px;
     display: block;
 }
 .extra-info-col h2{
-    margin:0;
+    margin: 0 0 20px 0;
 }
 .extra-info-col{
     padding: 30px;
     overflow-y: scroll;
     max-height: 50%;
+    max-height: 94vh;
+    overflow-y: scroll;
+    transition: all 1s;
+    /* min-height: 100vh; */
 }
 .event-filter{
     display: flex;
@@ -1189,13 +1271,44 @@ span{
     flex-wrap: wrap;
 }
 .event-filter .event:hover, .active-filter{
+    background-color: #1b499a;
+    border-color: #1b499a;
+    color: #fff!important;
+}
+.event-filter .event:hover span{
+    color: #fff;
+}
+.event-filter .event span{
+}
+.event-filter .event{
+    border: solid 2px #dedede;
+    background-color: #ebebeb;
+    padding: 3px 11px 3px 5px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.main-content .event-filter .event span{
+    color: #fff;
+}
+
+.main-content .event-filter{
+    display: flex;
+    gap: 3px;
+    flex-wrap: wrap;
+}
+.main-content .event-filter .event:hover, .active-filter{
     background-color: white;
     border-color: #dedede;
 }
-.event-filter .event:hover span{
+.main-content .event-filter .event:hover span{
     color: #000;
 }
-.event-filter .event{
+
+.main-content .event-filter .event{
     border: solid 2px #929292;
     background-color: #ffffff5e;
     padding: 3px 11px 3px 5px;
@@ -1206,9 +1319,7 @@ span{
     transition: all 0.2s;
     cursor: pointer;
 }
-.event-filter .event span{
-    color: #fff;
-}
+
 .location{
     background-color: #fff!important;
     color: #000!important;
@@ -1308,7 +1419,7 @@ overflow: hidden;
     background-color: #181818ad;
     margin: 10px 0;
     display: flex;
-    padding: 15px 20px;
+    padding: 10px 10px;
     border: solid 1px #3d3d3d;
     /* justify-content: space-between; */
     color: #fff;
