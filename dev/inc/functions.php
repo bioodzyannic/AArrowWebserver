@@ -48,7 +48,7 @@ function radialProgress($per){
 function filterByStatus(){
 	return '
 		<div class="search-options">
-						<input type="text" value="Search...">
+						<input type="text" placeholder="Search...">
 						<label>Filter by status:</label>
 						<div class="event-filter">
 									<div class="event">
