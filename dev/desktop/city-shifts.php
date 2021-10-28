@@ -12,7 +12,7 @@
 				<div class="col-md-3 main-content pattern-bg-dark">
 					<h1>SHIFTS</h1>
 					<div class="search-options">
-						<input type="text" value="Search...">
+						<input type="text" placeholder="Search...">
 						<label>Filter by status:</label>
 						<div class="event-filter">
 									<div class="event active-filter">
