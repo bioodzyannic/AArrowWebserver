@@ -45,6 +45,36 @@ function radialProgress($per){
 	return $radial;
 }
 
+function filterByStatus(){
+	return '
+		<div class="search-options">
+						<input type="text" value="Search...">
+						<label>Filter by status:</label>
+						<div class="event-filter">
+									<div class="event">
+										<img src="../images/shiftjohnny.png" alt="">
+										<span class="value">2</span>
+									</div>
+
+									<div class="event">
+										<img src="../images/emergencyred.png" alt="">
+										<span class="value">2</span>
+									</div>
+
+									<div class="event">
+										<img src="../images/greenphone.png" alt="">
+										<span class="value">2</span>
+									</div>
+
+									<div class="event">
+										<img src="../images/yellowphone.png" alt="">
+										<span class="value">2</span>
+									</div>
+								</div>
+					</div>
+	';
+}
+
 $states = array(
 	'AL'=>'ALABAMA',
 	'AK'=>'ALASKA',
