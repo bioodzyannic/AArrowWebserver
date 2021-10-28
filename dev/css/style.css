@@ -817,7 +817,7 @@ b{
     background-size: 20px 20px;
     background-position: 0 0, 30px 30px;
     background-repeat: repeat;
-    min-height: 100vh;
+    /* min-height: 100vh; */
 }
 .report-left-col,.report-right-col{
     /* height: inherit; */
