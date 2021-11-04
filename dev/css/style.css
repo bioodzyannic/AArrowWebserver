@@ -1471,6 +1471,40 @@ border: solid 1px #ffffff;
     /* width: 33%; */
     font-family: 'tahoma-bold';
 }
+
+.aa-carousel {
+    position: relative;
+}
+.controlers {
+    position: absolute;
+    bottom: -17px;
+    display: flex;
+    gap: 20px;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.controlers>*{
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+}
+.r{
+    transform: translate(0px, -3px) rotate(180deg);
+}
+.pics-container {
+    position: relative;
+    width: 20vw;
+    height: 30vh;
+    margin-bottom: 20px;
+}
+.pics-container img {
+    position: absolute;
+    width: 98%;
+}
+.pics-container img:first-child{}
+
+
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 768px) {
 .report h2{
