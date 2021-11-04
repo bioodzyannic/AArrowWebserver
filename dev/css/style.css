@@ -612,7 +612,7 @@ p, label {
     margin: 10px;
 }
 
-.main-content .spec, .aa-marker-info .spec, .extra-info-col .spec{
+.main-content .spec, .aa-marker-info .spec, .extra-info-col .spec, .aa-marker-info .spec{
     text-align: left;
     max-width: unset;
     display: flex;
@@ -622,7 +622,7 @@ p, label {
     flex-wrap: wrap;
 }
 .aa-marker-info .spec{
-    border:none;
+    /* border:none; */
 }
 .aarrow-table-01 tbody{
     /* max-height: 300px; */
@@ -655,6 +655,12 @@ margin: auto;
     /* padding: 0; */
     width: 72vw;
     top: 90%;
+}
+.search-options{
+    margin: 15px 0;
+}
+.text-event{
+    padding: 5px 11px!important;
 }
 .aa-marker-info h4{
     width: 100%;
@@ -1236,12 +1242,20 @@ span{
 .main-content .search-options input{
     width: 100%;
     height: 4ch;
-    margin-bottom: 10px;
+    /* margin-bottom: 0px; */
 }
 .main-content .search-options label{
     color: #fff;
     margin-bottom: 10px;
     display: block;
+    font-size: small;
+}
+
+.extra-info-col .search-options label {
+    color: #000;
+    margin-bottom: 10px;
+    display: block;
+    font-size: small;
 }
 
 .search-options input{
@@ -1297,9 +1311,10 @@ span{
 
 .main-content .event-filter{
     display: flex;
-    gap: 3px;
+    gap: 5px;
     flex-wrap: wrap;
 }
+
 .main-content .event-filter .event:hover, .active-filter{
     background-color: white;
     border-color: #dedede;
@@ -1307,7 +1322,7 @@ span{
 .main-content .event-filter .event:hover span{
     color: #000;
 }
-
+.profile-pic{}
 .main-content .event-filter .event{
     border: solid 2px #929292;
     background-color: #ffffff5e;
@@ -1419,7 +1434,7 @@ overflow: hidden;
     background-color: #181818ad;
     margin: 10px 0;
     display: flex;
-    padding: 10px 10px;
+    padding: 10px 20px;
     border: solid 1px #3d3d3d;
     /* justify-content: space-between; */
     color: #fff;
@@ -1429,6 +1444,10 @@ overflow: hidden;
     align-items: center;
     text-decoration: none;
     gap: 15px;
+}
+
+.marker-spinner-info .spec{
+    padding: 4px 0;
 }
 .single:hover{
     
@@ -1441,6 +1460,12 @@ border: solid 1px #ffffff;
     margin: 0;
     width: 70%;
     /* margin: 10px 0; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.profile-pic{
+    width: 50px;
 }
 .single>*{
     /* width: 33%; */
