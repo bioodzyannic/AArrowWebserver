@@ -13,7 +13,7 @@
 					<h1>Active Spinners</h1>
 					
 					<?php 
-						echo filterByStatus(); 
+						echo filterByActive(); 
 						echo filterByDay();
 						echo filterByData();
 					?>
