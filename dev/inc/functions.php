@@ -75,6 +75,55 @@ function filterByStatus(){
 	';
 }
 
+function filterByDay(){
+	return '
+		<div class="search-options">
+						<label>Filter by day:</label>
+						<div class="event-filter">
+							<div class="event text-event">
+								<span class="value">Mon</span>
+							</div>
+							<div class="event text-event">
+								<span class="value">Tue</span>
+							</div>
+							<div class="event text-event">
+								<span class="value">Wed</span>
+							</div>
+							<div class="event text-event">
+								<span class="value">Thu</span>
+							</div>
+							<div class="event text-event">
+								<span class="value">Fri</span>
+							</div>
+							<div class="event text-event">
+								<span class="value">Sat</span>
+							</div>
+							<div class="event text-event">
+								<span class="value">Sun</span>
+							</div>
+
+						</div>
+					</div>
+	';
+}
+
+function filterByData(){
+	return '
+		<div class="search-options">
+						<label>Filter by:</label>
+						<div class="event-filter">
+							<div class="event text-event">
+								<span class="value">Name</span>
+							</div>
+							<div class="event text-event">
+								<span class="value">Last name</span>
+							</div>							
+
+						</div>
+					</div>
+	';
+}
+
 $states = array(
 	'AL'=>'ALABAMA',
 	'AK'=>'ALASKA',
