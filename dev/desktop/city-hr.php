@@ -11,8 +11,13 @@
 			<div class="row main">
 				<div class="col-md-3 main-content pattern-bg-dark">
 					<h1>Active Spinners</h1>
-					<?php echo filterByStatus(); ?>
 					
+					<?php 
+						echo filterByStatus(); 
+						echo filterByDay();
+						echo filterByData();
+					?>
+
 					<?php 
 						$c = 5;
 						$la = 0;
@@ -24,15 +29,18 @@
 								</div>									
 							</div>
 							<div class="specs">
-								<h4>Name of the Spinner</h4>
+								<h4>Name of the Spinner <img class="profile-pic" src="../images/profile.svg" alt=""></h4>
 								<div class="spec">
-									<label>Total hours:</label><span class="value">10:00am</span>
+									<label>Total hours:</label><span class="value"><b>10:00am</b></span>
 								</div>
 								<div class="spec">
-									<label>Avg Audit:</label><span class="value">10:00am</span>
+									<label>Avg Audit:</label><span class="value"><b>10:00am</b></span>
 								</div>
 								<div class="spec">
-									<label>Phone Number:</label><span class="value"></span>
+									<label>Phone Number:</label><span class="value"><b>+353 123456789</b></span>
+								</div>
+								<div class="spec">
+									<label>OTA rate:</label><span class="value"><b></b></span>
 								</div>
 							</div>
 						</a>
@@ -54,7 +62,7 @@
 								</div>									
 							</div>
 							<div class="specs">
-								<h4>Name of the Spinner</h4>
+								<h4>Name of the Spinner<img class="profile-pic" src="../images/profile.svg" alt=""></h4>
 								<div class="spec">
 									<label>Current Status:</label><span class="value"></span>
 								</div>
