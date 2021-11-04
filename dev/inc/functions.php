@@ -75,6 +75,24 @@ function filterByStatus(){
 	';
 }
 
+function filterByActive(){
+	return '
+	<div class="search-options">
+		<input type="text" placeholder="Search...">
+					<label>Filter by day:</label>
+					<div class="event-filter">
+						<div class="event text-event">
+							<span class="value">Active</span>
+						</div>
+						<div class="event text-event">
+							<span class="value">Inactive</span>
+						</div>
+
+					</div>
+				</div>
+	';
+}
+
 function filterByDay(){
 	return '
 		<div class="search-options">
