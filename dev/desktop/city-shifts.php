@@ -11,32 +11,8 @@
 			<div class="row main">
 				<div class="col-md-3 main-content pattern-bg-dark">
 					<h1>SHIFTS</h1>
-					<div class="search-options">
-						<input type="text" placeholder="Search...">
-						<label>Filter by status:</label>
-						<div class="event-filter">
-									<div class="event active-filter">
-										<img src="../images/shiftjohnny.png" alt="">
-										<span class="value">2</span>
-									</div>
-
-									<div class="event">
-										<img src="../images/emergencyred.png" alt="">
-										<span class="value">2</span>
-									</div>
-
-									<div class="event">
-										<img src="../images/greenphone.png" alt="">
-										<span class="value">2</span>
-									</div>
-
-									<div class="event">
-										<img src="../images/yellowphone.png" alt="">
-										<span class="value">2</span>
-									</div>
-								</div>
-					</div>
-
+					<?php filter(array('status')); ?>
+					
 					<?php 
 						$c = 5;
 						$la = 0;
@@ -80,5 +56,54 @@
 	</div>
 </div>
 
+
+
+<script>
+	const data = `
+	    <div class='aa-marker-info'>
+	        <h4>Location Name</h4>
+	        <div class="aa-carousel">
+
+				<div class="pics-container">
+					<img class="spinner-pic" src="https://aarrowsignspinners.com/wp-content/uploads/2021/05/Jimmel-Big-Tex-Martin-Spinning-Signs-in-Houston.jpg">
+					<img class="spinner-pic" src="https://aarrowsignspinners.com/wp-content/uploads/2021/05/Sign-Spinner-in-Los-Angeles.jpg">
+					<img class="spinner-pic" src="https://aarrowsignspinners.com/wp-content/uploads/2021/05/Grand-Opening-Sign-Spinners-in-California.jpg">
+				</div>
+				<div class="controlers">
+					<div class="l" onclick='carousel(this,-1)'><img src="../images/drop.svg" alt=""></div>
+					<div class="r" onclick='carousel(this,1)'><img src="../images/drop.svg" alt=""></div>
+				</div>
+			</div>
+
+	        <div class="marker-spinner-info">
+		        <div class="spec">
+					<div>
+						<label>Employee:</label><span class="value"><b>John Miller</b></span>
+					</div>
+					<div>
+						<label>Status:</label><span class="value">
+							<img src="../images/shiftjohnny.png" alt="">
+						</span>
+					</div>
+				</div>
+				<div class="spec">
+						<label>Shift Start:</label><span class="value"><b>7:30 AM</b></span>
+				</div>
+				<div class="spec">
+						<label>Shift End:</label><span class="value"><b>11:30 AM</b></span>
+				</div>
+				<div class="spec">
+						<label>Employee Phone:</label><span class="value"><b>(678) 887-8309</b></span>
+				</div>
+				<div class="spec">
+						<label>Location Phone:</label><span class="value"><b>(678) 887-8309</b></span>
+				</div>
+	        </div>	       
+	    </div>`;
+</script>
+<script type="text/javascript" src="../js/map.js"></script>
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcfMA8gM8H9EFwRjon01dT63iN-7uI1a4&callback=initMap">
+</script>
 
 <?php include '../inc/footer.php'; ?>

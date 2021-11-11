@@ -12,11 +12,9 @@
 				<div class="col-md-3 main-content pattern-bg-dark">
 					<h1>Active Spinners</h1>
 					
-					<?php 
-						echo filterByActive(); 
-						echo filterByDay();
-						echo filterByData();
-					?>
+					<?php filter(array('status','active','day')); ?>
+					<?php sortByData(array('Name','Last name','Start Time','End Time')); ?>
+					
 
 					<?php 
 						$c = 5;
@@ -49,7 +47,8 @@
 				<div id="map"></div>
 				<div class="col-md-3 extra-info-col dotted-bg">
 					<h2>Recruits</h2>
-					<?php echo filterByStatus(); ?>
+					<?php filter(array('status')); ?>
+					<?php sortByData(array('Name','Last name','Start Time','End Time')); ?>
 					
 					<?php 
 						$c = 5;
