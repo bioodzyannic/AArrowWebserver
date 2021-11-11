@@ -1,10 +1,12 @@
 	<div class="top-menu stripeBG">
 		<div>
 			<div class="logo">
-				<img src="../images/logo.svg" class="">
+				<a href="/desktop">
+					<img src="../images/logo.svg" class="">
+				</a>
 			</div>
 			<ul class="menu-options">
-				<li><a href="/">Home</a></li>
+				<li><a href="/desktop/index.php">Home</a></li>
 				
 			</ul>
 		</div>

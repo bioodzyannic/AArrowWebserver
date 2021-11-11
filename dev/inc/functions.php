@@ -45,101 +45,127 @@ function radialProgress($per){
 	return $radial;
 }
 
-function filterByStatus(){
-	return '
-		<div class="search-options">
-						<input type="text" placeholder="Search...">
-						<label>Filter by status:</label>
-						<div class="event-filter">
-									<div class="event">
-										<img src="../images/shiftjohnny.png" alt="">
-										<span class="value">2</span>
-									</div>
+function filter($args){
+	if(!empty($args)){
+		$output = searchBar();
+		$output .= '
+			<div class="search-container">
+		';
+		/* AARROW CUSTOM EVENTS */
+		if(in_array('status', $args)){
+		$output .= '
+			<div class="search-options">
+				<label>Status:</label>	
+				<div class="event-filter">
+							<div onclick="filter(this);" class="event">
+								<img src="../images/shiftjohnny.png" alt="">
+								<span class="value">2</span>
+							</div>
 
-									<div class="event">
-										<img src="../images/emergencyred.png" alt="">
-										<span class="value">2</span>
-									</div>
+							<div onclick="filter(this);" class="event">
+								<img src="../images/emergencyred.png" alt="">
+								<span class="value">2</span>
+							</div>
 
-									<div class="event">
-										<img src="../images/greenphone.png" alt="">
-										<span class="value">2</span>
-									</div>
+							<div onclick="filter(this);" class="event">
+								<img src="../images/greenphone.png" alt="">
+								<span class="value">2</span>
+							</div>
 
-									<div class="event">
-										<img src="../images/yellowphone.png" alt="">
-										<span class="value">2</span>
-									</div>
+							<div onclick="filter(this);" class="event">
+								<img src="../images/yellowphone.png" alt="">
+								<span class="value">2</span>
+							</div>
+						</div>
+			</div>
+		';
+		}
+		/* STATUS ACTIVE / INACTIVE */
+		if(in_array('active', $args)){
+			$output .='<div class="search-options">
+							<label>Active / Inactive:</label>
+							<div class="event-filter">
+								<div onclick="filter(this);" class="event text-event">
+									<span class="value">Active</span>
 								</div>
-					</div>
-	';
-}
+								<div onclick="filter(this);" class="event text-event">
+									<span class="value">Inactive</span>
+								</div>
 
-function filterByActive(){
-	return '
-	<div class="search-options">
-		<input type="text" placeholder="Search...">
-					<label>Filter by day:</label>
-					<div class="event-filter">
-						<div class="event text-event">
-							<span class="value">Active</span>
+							</div>
 						</div>
-						<div class="event text-event">
-							<span class="value">Inactive</span>
-						</div>
+				';
+		}
 
-					</div>
-				</div>
-	';
-}
-
-function filterByDay(){
-	return '
-		<div class="search-options">
+		/* STATUS ACTIVE / INACTIVE */
+		if(in_array('day', $args)){
+			$output .='
+				<div class="search-options">
 						<label>Filter by day:</label>
 						<div class="event-filter">
-							<div class="event text-event">
+							<div onclick="filter(this);" class="event text-event">
 								<span class="value">Mon</span>
 							</div>
-							<div class="event text-event">
+							<div onclick="filter(this);" class="event text-event">
 								<span class="value">Tue</span>
 							</div>
-							<div class="event text-event">
+							<div onclick="filter(this);" class="event text-event">
 								<span class="value">Wed</span>
 							</div>
-							<div class="event text-event">
+							<div onclick="filter(this);" class="event text-event">
 								<span class="value">Thu</span>
 							</div>
-							<div class="event text-event">
+							<div onclick="filter(this);" class="event text-event">
 								<span class="value">Fri</span>
 							</div>
-							<div class="event text-event">
+							<div onclick="filter(this);" class="event text-event">
 								<span class="value">Sat</span>
 							</div>
-							<div class="event text-event">
+							<div onclick="filter(this);" class="event text-event">
 								<span class="value">Sun</span>
 							</div>
 
 						</div>
 					</div>
-	';
+				';
+		}
+	}
+	$output.='</div>';
+	echo $output;
 }
 
-function filterByData(){
-	return '
-		<div class="search-options">
-						<label>Filter by:</label>
-						<div class="event-filter">
-							<div class="event text-event">
-								<span class="value">Name</span>
-							</div>
-							<div class="event text-event">
-								<span class="value">Last name</span>
-							</div>							
 
-						</div>
-					</div>
-	';
+
+function sortByData($args){
+	if(!empty($args)){
+		$output .= '
+			<div class="search-container">
+				<div class="search-options">
+					<label>Sort by:</label>
+						<div class="event-filter">
+		';
+		/* AARROW CUSTOM EVENTS */
+		foreach ($args as $key => $value){
+		$output .= '
+				<div onclick="sort(this);" class="event text-event" data-sort="">
+					<span class="value">' . $value . '</span>
+				</div>			
+		';
+		}
+	
+	$output.='
+			</div>
+		</div>
+	</div>';
+	echo $output;
+	}
+}
+
+function searchBar(){
+    return '<div class="search-options">
+            <input type="text" placeholder="Search..." oninput="searchFired(this)">
+        </div>';
+
 }
 
 $states = array(
