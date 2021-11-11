@@ -17,3 +17,22 @@ function rate(elem){
 	/* Insert value in hidden input named "stars" within parent form */
 	parent.parentElement.querySelector('input[name="stars"]').value = rating;
 }
+
+function carousel(elem,dir){
+	const container = elem.parentElement.parentElement.querySelector('.pics-container');
+	if(dir==1){
+		container.appendChild(container.children[0]);
+	}else{
+		container.insertBefore(container.lastChild,container.children[0]);
+	}
+}
+
+function filter(elem){
+	elem.classList.toggle('active-filter');
+}
+
+function sort(elem){
+	var options = elem.parentElement.children;
+	Array.from(options).map((val)=>{val.setAttribute('data-sort','0');});
+	elem.setAttribute('data-sort','1');	
+}
