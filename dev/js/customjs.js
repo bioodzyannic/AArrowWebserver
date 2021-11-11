@@ -32,6 +32,16 @@ function filter(elem){
 }
 
 function sort(elem){
+
+	if(elem.getAttribute('data-sort')=='1'){
+		if(elem.getAttribute('data-order')=='1'){
+			elem.setAttribute('data-order','-1');
+			return;
+		}else{
+			elem.setAttribute('data-order','1');
+			return;
+		}
+	}
 	var options = elem.parentElement.children;
 	Array.from(options).map((val)=>{val.setAttribute('data-sort','0');});
 	elem.setAttribute('data-sort','1');	
