@@ -57,22 +57,22 @@ function filter($args){
 			<div class="search-options">
 				<label>Status:</label>	
 				<div class="event-filter">
-							<div onclick="filter(this);" class="event">
+							<div onclick="select(this)" class="event">
 								<img src="../images/shiftjohnny.png" alt="">
 								<span class="value">2</span>
 							</div>
 
-							<div onclick="filter(this);" class="event">
+							<div onclick="select(this)" class="event">
 								<img src="../images/emergencyred.png" alt="">
 								<span class="value">2</span>
 							</div>
 
-							<div onclick="filter(this);" class="event">
+							<div onclick="select(this)" class="event">
 								<img src="../images/greenphone.png" alt="">
 								<span class="value">2</span>
 							</div>
 
-							<div onclick="filter(this);" class="event">
+							<div onclick="select(this)" class="event">
 								<img src="../images/yellowphone.png" alt="">
 								<span class="value">2</span>
 							</div>
@@ -85,10 +85,10 @@ function filter($args){
 			$output .='<div class="search-options">
 							<label>Active / Inactive:</label>
 							<div class="event-filter">
-								<div onclick="filter(this);" class="event text-event">
+								<div onclick="select(this)" class="event text-event">
 									<span class="value">Active</span>
 								</div>
-								<div onclick="filter(this);" class="event text-event">
+								<div onclick="select(this)" class="event text-event">
 									<span class="value">Inactive</span>
 								</div>
 
@@ -103,25 +103,25 @@ function filter($args){
 				<div class="search-options">
 						<label>Filter by day:</label>
 						<div class="event-filter">
-							<div onclick="filter(this);" class="event text-event">
+							<div onclick="select(this)" class="event text-event">
 								<span class="value">Mon</span>
 							</div>
-							<div onclick="filter(this);" class="event text-event">
+							<div onclick="select(this)" class="event text-event">
 								<span class="value">Tue</span>
 							</div>
-							<div onclick="filter(this);" class="event text-event">
+							<div onclick="select(this)" class="event text-event">
 								<span class="value">Wed</span>
 							</div>
-							<div onclick="filter(this);" class="event text-event">
+							<div onclick="select(this)" class="event text-event">
 								<span class="value">Thu</span>
 							</div>
-							<div onclick="filter(this);" class="event text-event">
+							<div onclick="select(this)" class="event text-event">
 								<span class="value">Fri</span>
 							</div>
-							<div onclick="filter(this);" class="event text-event">
+							<div onclick="select(this)" class="event text-event">
 								<span class="value">Sat</span>
 							</div>
-							<div onclick="filter(this);" class="event text-event">
+							<div onclick="select(this)" class="event text-event">
 								<span class="value">Sun</span>
 							</div>
 
@@ -147,7 +147,7 @@ function sortByData($args){
 		/* AARROW CUSTOM EVENTS */
 		foreach ($args as $key => $value){
 		$output .= '
-				<div onclick="sort(this);" class="event text-event" data-sort="">
+				<div onclick="sort(this);" class="event sort" data-sort="0" data-order="1">
 					<span class="value">' . $value . '</span>
 				</div>			
 		';
