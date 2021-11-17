@@ -28,11 +28,19 @@ function carousel(elem,dir){
 }
 
 function filter(elem){
-	elem.classList.toggle('active-filter');
+	elem.classList.toggle('active');
+}
+
+function select(elem,multiple=false){
+	elem.classList.toggle('active');
+	if(multiple){
+		var options = elem.parentElement.children;
+		Array.from(options).map((val)=>{val.classList.remove('active');});
+		elem.classList.add('active');	
+	}
 }
 
 function sort(elem){
-
 	if(elem.getAttribute('data-sort')=='1'){
 		if(elem.getAttribute('data-order')=='1'){
 			elem.setAttribute('data-order','-1');
