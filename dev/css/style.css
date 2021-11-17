@@ -15,6 +15,15 @@ h1,h2{
 h3,h4{
     font-family: "tahoma-bold";
 }
+.video-timer{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 5px 0;
+    color: #fff;
+    font-size: small;
+}
+
+.video-timer span{}
 
 .container-fluid{
   width: 100%;
@@ -990,6 +999,7 @@ form.feedback input[type="submit"]{
 .single.location .spec>*, .marker-spinner-info .spec>*{
     display: flex;
     width: 45%;
+    align-items: center;
     justify-content: space-between;
 }
 .spinner{
@@ -1158,8 +1168,8 @@ p, label{
 }
 .menu-options a{
     font-family: sans-serif;
-    font-size: 15px;
-    /* text-decoration: unset; */
+    font-size: 17px;
+    text-decoration: unset;
     color: #fff;
     height: 70px;
 }
@@ -1281,7 +1291,50 @@ span{
     display: block;
     font-size: small;
 }
-[data-sort]{}
+.sort{
+    padding-left: 14px!important;
+}
+[data-sort="0"]::after{
+    display: none!important;
+}
+.extra-info-col [data-sort]:after{
+        content: url(../images/drop.svg);
+        width: 25px;
+        height: auto;
+        display: inline-block;
+        width: 20px;
+        right: 1%;
+        top: 50%;
+        transform: rotate(90deg);
+        transition: all 0.2s;
+        filter: brightness(3.2);
+        transform-origin: center;
+}
+.employee-name{
+    font-size: x-large;
+}
+
+[data-sort]:after{
+        content: url(../images/drop.svg);
+        width: 25px;
+        height: auto;
+        display: inline-block;
+        width: 20px;
+        right: 1%;
+        top: 50%;
+        transform: rotate(90deg);
+        /* transition: all 0.2s; */
+        filter: brightness(3.5);
+        transform-origin: center;
+        opacity: 0;
+        /* transition: all 0.2s; */
+}
+[data-sort='1']:after{
+    opacity: 1;
+}
+[data-sort='1'][data-order="-1"]:after{transform: rotate(-90deg) translate(0px, 4px);}
+
+
 [data-sort]:hover{
     background-color: #2d5efec7!important;
     border-color: #4e77ff!important;
@@ -1332,13 +1385,13 @@ span{
     gap: 3px;
     flex-wrap: wrap;
 }
-.event-filter .event:hover{
+.event-filter .event:hover, .option:hover{
     background-color: #17bf33ad;
     border-color: #12bd1c;
-    /* color: #000; */
+    color: #fff;
 }
 
-.active-filter{
+.event.active, .option.active{
     background-color: #17bf33!important;
     border-color: #12bd1c!important;
     color: #fff!important;
@@ -1349,7 +1402,7 @@ span{
 }
 .event-filter .event span{
 }
-.event-filter .event{
+.event-filter .event, .option{
     border: solid 2px #dedede;
     background-color: #ebebeb;
     padding: 3px 11px 3px 5px;
@@ -1360,6 +1413,8 @@ span{
     transition: all 0.2s;
     cursor: pointer;
     font-size: 12px;
+    user-select: none;
+    height: 22px;
 }
 .main-content .event-filter .event span{
     color: #fff;
@@ -1371,7 +1426,7 @@ span{
     flex-wrap: wrap;
 }
 
-.main-content .event-filter .event:hover, .active-filter{
+.main-content .event-filter .event:hover, .active{
     background-color: #17bf33ad;
     border-color: #12bd1c;
 }
@@ -1521,8 +1576,10 @@ overflow: hidden;
     padding: 4px 0;
 }
 .single:hover{
-    background-color: hsl(0deg 0% 20% / 59%);
-    border: solid 2px #ffffff;
+    
+background-color: hsl(0deg 0% 20% / 59%);
+    
+border: solid 2px #ffffff;
 }
 .single h4{
     color: #fff;
@@ -1625,12 +1682,11 @@ color: #fff;
     display: flex;
     justify-content: space-between;
 }
-.map-controlers input[type="range"]{width: 100%;filter: hue-rotate(135deg) saturate(5);margin: 15px 0 0 0;}
+.map-controlers input[type="range"]{width: 100%;filter: hue-rotate(135deg) saturate(5);margin: 0;}
 .map-controlers .buttons img:hover{
-    border: solid 2px #000000;
+    border: solid 2px #ffffff;
 }
 .map-controlers .buttons img{
-    filter: invert(1);
     /* width: 25px; */
     padding: 14px;
     height: auto;
@@ -1638,6 +1694,10 @@ color: #fff;
     transition: all 0.1s;
     /* border-radius: 50px; */
     cursor: pointer;
+}
+.buttons img.active{
+    background-color: #0000007d;
+    border: solid 2px #ffffff;
 }
 .flip{
     transform: rotate(180deg);
