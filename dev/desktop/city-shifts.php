@@ -12,6 +12,8 @@
 				<div class="col-md-3 main-content pattern-bg-dark">
 					<h1>SHIFTS</h1>
 					<?php filter(array('status')); ?>
+					<?php sortByData(array('Sch Start','Spinner','Location')); ?>
+
 					
 					<?php 
 						$c = 5;
@@ -82,7 +84,10 @@
 					</div>
 					<div>
 						<label>Status:</label><span class="value">
-							<img src="../images/shiftjohnny.png" alt="">
+							<div>
+								<img src="../images/shiftjohnny.png" alt="" style="margin: 0 auto; display: block;">
+								<span>Status Name</span>
+							</div>
 						</span>
 					</div>
 				</div>
