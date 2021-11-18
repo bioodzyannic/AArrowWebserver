@@ -88,28 +88,15 @@
 				</div>
 				<div id="map"></div>
 				<div class="map-controlers">
-					<div class="event-filter">
-							<div class="option text-event" onclick="select(this)">
-								<span class="value">Path</span>
-							</div>
-							<div class="option text-event" onclick="select(this)">
-								<span class="value">Path length short</span>
-							</div>
-							<div class="option text-event" onclick="select(this)">
-								<span class="value">Traffic</span>
-							</div>
-							<div class="option text-event" onclick="select(this)">
-								<span class="value">Go-To</span>
-							</div>
-							<div class="option text-event" onclick="select(this)">
-								<span class="value">Heatmap</span>
-							</div>
-						</div>
-					<div class="video-timer">
-						<span id="current-time">00:00:00</span>
-						<span id="remaining-time">00:15:00</span>
+					<div id="local-time">
+						<span id="time">04:32:00pm</span>
+						<!-- <span id="time-zone">PST</span> -->
 					</div>
 					<input type="range">
+					<!-- <div class="video-timer">
+						<span id="current-time">00:00:00</span>
+						<span id="remaining-time">00:15:00</span>
+					</div> -->
 					<div class="buttons">						
 						<img class="flip" src="../images/play3.svg" onclick="select(this,true)">
 						<img class="flip" src="../images/play2.svg" onclick="select(this,true)">
@@ -118,6 +105,23 @@
 						<img src="../images/play.svg" onclick="select(this,true)">
 						<img src="../images/play2.svg" onclick="select(this,true)">
 						<img src="../images/play3.svg" onclick="select(this,true)">
+					</div>
+					<div class="event-filter">
+						<div class="option text-event" onclick="select(this)">
+							<span class="value">Path</span>
+						</div>
+						<div class="option text-event" onclick="select(this)">
+							<span class="value">Path length short</span>
+						</div>
+						<div class="option text-event" onclick="select(this)">
+							<span class="value">Traffic</span>
+						</div>
+						<div class="option text-event" onclick="select(this)">
+							<span class="value">Go-To</span>
+						</div>
+						<div class="option text-event" onclick="select(this)">
+							<span class="value">Heatmap</span>
+						</div>
 					</div>
 				</div>
 				
