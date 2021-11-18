@@ -18,10 +18,16 @@ h3,h4{
 .video-timer{
     display: flex;
     justify-content: space-between;
-    margin: 10px 0 5px 0;
+    /* margin: 10px 0 5px 0; */
     color: #fff;
     font-size: small;
 }
+#local-time{
+    color: #fff;
+    text-align: center;
+    font-size: 2em;
+}
+
 
 .video-timer span{}
 
@@ -1383,6 +1389,7 @@ span{
 .event-filter{
     display: flex;
     gap: 3px;
+    margin: 13px 0;
     flex-wrap: wrap;
 }
 .event-filter .event:hover, .option:hover{
@@ -1682,7 +1689,7 @@ color: #fff;
     display: flex;
     justify-content: space-between;
 }
-.map-controlers input[type="range"]{width: 100%;filter: hue-rotate(135deg) saturate(5);margin: 0;}
+.map-controlers input[type="range"]{width: 100%;filter: hue-rotate(135deg) saturate(5);margin: 10px 0 5px 0;}
 .map-controlers .buttons img:hover{
     border: solid 2px #ffffff;
 }
