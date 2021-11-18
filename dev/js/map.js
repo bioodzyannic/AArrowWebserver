@@ -178,6 +178,7 @@
 
   let map;
 
+
   function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 35.625125, lng: -95.099960 },
@@ -188,39 +189,6 @@
       var lat = Math.random() * (47.644586 - 32.322133) + 32.322133;
       var lng = Math.random() * (-121.031972 - -76.202357) + -76.202357;
 
-      var data = `
-        <div class='aa-marker-info'>
-            <h4>Springfield</h4>
-            <div class="spec event-spec">
-              <div class="event">
-                <img src="../images/shiftjohnny.png" alt="">
-                <span class="value">2</span>
-              </div>
-
-              <div class="event">
-                <img src="../images/emergencyred.png" alt="">
-                <span class="value">2</span>
-              </div>
-
-              <div class="event">
-                <img src="../images/greenphone.png" alt="">
-                <span class="value">2</span>
-              </div>
-
-              <div class="event">
-                <img src="../images/yellowphone.png" alt="">
-                <span class="value">2</span>
-              </div>
-               <div class="event">
-                <img src="../images/yellowphone.png" alt="">
-                <span class="value">2</span>
-              </div>
-               <div class="event">
-                <img src="../images/yellowphone.png" alt="">
-                <span class="value">2</span>
-              </div>
-            </div>
-        </div>`;
       var infowindow = new google.maps.InfoWindow({
       content: data
       });
@@ -230,7 +198,7 @@
         title: "Hello World!",
         //icon: `${icons[img]}`
         icon: "../images/map-icon.png",
-        animation: google.maps.Animation.BOUNCE
+        //animation: google.maps.Animation.BOUNCE
       });
 
 
@@ -240,24 +208,3 @@
 
     }
   }
-function resizeMain(dir){
-  let mainCol = document.querySelector('.main-content');
-  if(dir=1){
-    mainCol.classList.remove('col-md-3');
-    mainCol.classList.add('col-md-1');
-  }else{
-    mainCol.classList.remove('col-md-1');
-    mainCol.classList.add('col-md-3');
-  }
-
-
-}
-
-function showState(elem){
-  let infoCol = document.getElementById('info-col');
-  if(infoCol.classList==""){
-    infoCol.classList.add('col-md-8');
-    resizeMain(1);
-  }
-  infoCol.querySelector('h2').innerHTML='Location name';
-}
