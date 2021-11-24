@@ -647,6 +647,7 @@ p, label {
     flex-wrap: wrap;
     font-size: initial;
 }
+.pattern-bg-dark .spec{color: #fff;}
 .aa-marker-info .spec{
     /* border:none; */
 }
@@ -1377,6 +1378,9 @@ span{
     height: 4ch;
     margin-bottom: 10px;
 }
+.pattern-bg-dark input[type="date"]{
+    margin: 0;
+}
 .search-options input:focus-visible{
     outline:none;
 }
@@ -1605,6 +1609,7 @@ overflow: hidden;
 .single .pics-container img{
     /* height: auto; */
     /* display: contents; */
+    border-radius: 5px;
 }
 
 .marker-spinner-info .spec{
