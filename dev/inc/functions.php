@@ -1,5 +1,7 @@
 <?php 
 
+include 'classes/SpinnerCard.php';
+
 function radialProgress($per){
 	$radius=105;
 	if($per){
@@ -167,6 +169,28 @@ function searchBar(){
         </div>';
 
 }
+
+
+// function spinnerCarousel($srcs=[]){
+// 	$imgs = '';
+// 	foreach ($srcs as $key => $img) {
+// 		$imgs .= '<img class="spinner-pic" src="'. $img .'">';
+// 	}
+// 	'<div class="pics-container">
+					
+// 	</div>
+// 	<div class="controllers">
+// 		<div class="l" onclick="carousel(this,-1)"><img src="../images/drop.svg" alt=""></div>
+// 		<div class="r" onclick="carousel(this,1)"><img src="../images/drop.svg" alt=""></div>
+// 	</div>';
+
+// }
+
+
+
+
+
+
 
 $states = array(
 	'AL'=>'ALABAMA',
