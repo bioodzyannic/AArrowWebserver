@@ -11,83 +11,18 @@
 			<div class="row main">
 				<div class="col-md-3 main-content pattern-bg-dark">
 					<h1>Location name</h1>
-					<div class="spinformation">
-						<div class="aa-carousel">
+					<?php 
+						$json = '
+						{"_id":"449954","date":"2021-11-23","location":"Wehner Multifamily - Starburst","startTime":"11:00:00","endTime":"19:00:00","status":"5. CALL to CONFIRM","clockInTime":"13:00:00","clockOutTime":"18:30:00","hasStarted":false,"hasEnded":false,"isSigned":false,"gpsData":[],"breakStartTime":"14:30:00","breakEndTime":"15:20:00","breakTimes":"","locationPhone":"123-456-789","employeePhone":"(512) 564-0740","employeeName":"Missy Gonzalez","images":[{"path":"https://aarrowsignspinners.com/wp-content/uploads/2021/05/Jimmel-Big-Tex-Martin-Spinning-Signs-in-Houston.jpg"},{"path":"https://aarrowsignspinners.com/wp-content/uploads/2021/05/Sign-Spinner-in-Los-Angeles.jpg"},{"path":"https://aarrowsignspinners.com/wp-content/uploads/2021/05/Grand-Opening-Sign-Spinners-in-California.jpg"}],"latitude":30.3522149,"longitude":-97.6928411,"timezone":"America/Chicago"}
+						';
+						$query = json_decode($json);
+						$card = new SpinnerCard($query);
+						$card->render();
 
-							<div class="pics-container">
-								<img class="spinner-pic" src="https://aarrowsignspinners.com/wp-content/uploads/2021/05/Jimmel-Big-Tex-Martin-Spinning-Signs-in-Houston.jpg">
-								<img class="spinner-pic" src="https://aarrowsignspinners.com/wp-content/uploads/2021/05/Sign-Spinner-in-Los-Angeles.jpg">
-								<img class="spinner-pic" src="https://aarrowsignspinners.com/wp-content/uploads/2021/05/Grand-Opening-Sign-Spinners-in-California.jpg">
-							</div>
-							<div class="controlers">
-								<div class="l" onclick='carousel(this,-1)'><img src="../images/drop.svg" alt=""></div>
-								<div class="r" onclick='carousel(this,1)'><img src="../images/drop.svg" alt=""></div>
-							</div>
-						</div>
-
-				        <div class="marker-spinner-info">
-					        <div class="spec">
-								<div>
-									<span class="value employee-name"><b>John Miller</b></span>
-								</div>
-								<div>
-									<label>Status:</label><span class="value">
-										<div>
-											<img src="../images/shiftjohnny.png" alt="" style="margin: 0 auto; display: block;">
-											<span>Status Name</span>
-										</div>
-									</span>
-								</div>
-							</div>
-							<div class="spec">
-									<label>Employee Phone:</label><span class="value"><b>(678) 887-8309</b></span>
-							</div>
-							<div class="spec">
-									<label>Location Phone:</label><span class="value"><b>(678) 887-8309</b></span>
-							</div>
-							
-							<div class="spec">
-								<div>
-									<label>Schd Start:</label><span class="value"><b>7:30 AM</b></span>
-								</div>
-								<div>
-									<label>Schd End:</label><span class="value"><b>11:30 AM</b></span>
-								</div>
-							</div>
-							<div class="spec">
-								<div>
-									<label>T-In:</label><span class="value"><b>7:30 AM</b></span>
-								</div>
-								<div>
-									<label>T-Out:</label><span class="value"><b>11:30 AM</b></span>
-								</div>
-							</div>
-							<div class="spec">
-								<div>
-									<label>Break Start:</label><span class="value"><b>7:30 AM</b></span>
-								</div>
-								<div>
-									<label>Break End:</label><span class="value"><b>11:30 AM</b></span>
-								</div>
-							</div>
-							<div class="spec">
-								<label>Break Times:</label><span class="value"><b>7:30 AM</b></span>
-							</div>
-							<div  class="spec full-spec">
-								<label>Manager Notes:</label>
-								<span class="value">
-									Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptatum animi praesentium officiis cumque saepe, quo exercitationem culpa? Quo soluta nemo delectus magni mollitia ratione dolores quis ex minima cupiditate.
-								</span>
-							</div>
-
-				        </div>
-					</div>
-								
-					
-					
-				</div>
+					 ?>
+				</div> 
 				<div id="map"></div>
-				<div class="map-controlers">
+				<div class="map-controllers">
 					<div id="local-time">
 						<span id="time">04:32:00pm</span>
 						<!-- <span id="time-zone">PST</span> -->
