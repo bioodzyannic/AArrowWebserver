@@ -655,6 +655,10 @@ p, label {
     /* max-height: 300px; */
     /* overflow-y: scroll; */
 }
+.location .value{
+    color: #000;
+}
+.pattern-bg-dark .spec{color: #fff;}
 .aa-marker-info .event{
     width: auto;
 }
