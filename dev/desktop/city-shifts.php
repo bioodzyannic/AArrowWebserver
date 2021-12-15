@@ -17,6 +17,13 @@ $query = json_decode($json);
 			<div class="row main">
 				<div class="col-md-4 main-content pattern-bg-dark">
 					<h1>SHIFTS</h1>
+					<div class="btn-row">
+							<input type="date" class="aa-btn aa-input" name="date" value="<?php echo date('Y-m-d'); ?>">
+							<div class="date-nav">
+								<button class="up"><img src="../images/drop.svg" alt=""></button>
+								<button class="down"><img src="../images/drop.svg" alt=""></button>
+							</div>
+						</div>
 					<?php filter(array('status')); ?>
 					<?php sortByData(array('Sch Start','Spinner','Location')); ?>
 

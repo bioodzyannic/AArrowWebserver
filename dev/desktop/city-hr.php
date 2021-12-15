@@ -48,7 +48,6 @@
 				<div class="col-md-3 extra-info-col dotted-bg">
 					<h2>Recruits</h2>
 					<?php filter(array('status')); ?>
-					<?php sortByData(array('Name','Last name','Start Time','End Time')); ?>
 					
 					<?php 
 						$c = 5;
