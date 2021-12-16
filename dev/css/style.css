@@ -6,6 +6,13 @@ h1,h2{
     color: #fff;
     margin: 0 0 20px 0;
 }
+.apps-container>div{
+    /* background: #ededed; */
+    display: grid;
+    border-radius: 50px;
+    border: solid 3px #cacaca;
+    cursor: pointer;
+}
 .date-nav{
     display: flex;
     gap: 8px;
@@ -647,6 +654,12 @@ button.up, button.down{
 .user-option:hover, .controllers>*:hover{
     background-color: #d2d2d24d;
 }
+.apps-container img{
+    width: 70%;
+    /* height: auto; */
+    margin: auto;
+    filter: brightness(0.5);
+}
 .apps-container{
     width: 250px;
     height: 250px;
@@ -661,13 +674,17 @@ button.up, button.down{
     box-shadow: 0 2px 7px 1px rgb(0 0 0 / 30%);
     overflow-y: scroll;
     display: none;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    padding: 10px;
 }
 .user-option[data-open="1"]{
     background-color: #d2d2d24d;
     border: solid 2px #cacaca;
 }
 .user-option[data-open="1"] .apps-container{
-    display: block;
+    display: grid;
 }
 
 .apps-container::-webkit-scrollbar {
@@ -708,16 +725,11 @@ button.up, button.down{
     width: auto;
 }
 .aa-marker-info .event-spec{
-    
-/* column-gap: 10px; */
-    
-max-width: 190px;
-    
-margin: 0;
-    
-justify-content: center!important;
-    
-margin: auto;
+    /* column-gap: 10px; */
+    /* max-width: 190px; */
+    margin: 0;
+    justify-content: center!important;
+    margin: auto;
 }
 #info-col{
     transition: all 1s;
@@ -749,6 +761,7 @@ margin: auto;
     justify-content: normal!important;
     row-gap: 13px;
     column-gap: 0;
+    /* flex-wrap: nowrap; */
 }
 .info-grid{
     width: 90%;
@@ -1448,12 +1461,10 @@ span{
 }
 .extra-info-col{
     padding: 30px;
-    overflow-y: scroll;
-    max-height: 50%;
+    max-width: 25vw;
     max-height: 94vh;
     overflow-y: scroll;
     transition: all 1s;
-    /* min-height: 100vh; */
 }
 .event-filter{
     display: flex;
