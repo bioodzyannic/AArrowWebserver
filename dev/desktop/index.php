@@ -1,4 +1,7 @@
-<?php include '../inc/header.php'; ?>
+<?php 
+$page='home';
+include '../inc/header.php'; 
+?>
 
 <div class="container-fluid">
 	<div class="">
@@ -9,12 +12,19 @@
 			</div>
 			<!--End of Menu-->
 			<div class="row main">
+
 				<div class="col-md-3 main-content pattern-bg-dark">
 					<div class="search-options">
+						<!-- MOBILE EXPAND TRIGGER -->
+							<div class="expand-trigger" onclick="colExpand(this,'.main-content')"><img src="../images/drop.svg" alt=""></div>
+						<!-- MOBILE EXPAND TRIGGER -->
 						<h1>Some God view title</h1>
 						<div class="btn-row">
 							<input type="date" class="aa-btn aa-input" name="date" value="<?php echo date('Y-m-d'); ?>">
-							<button class="aa-btn blue">Search Job</button>
+							<div class="date-nav">
+								<button class="up"><img src="../images/drop.svg" alt=""></button>
+								<button class="down"><img src="../images/drop.svg" alt=""></button>
+							</div>
 						</div>
 					</div>
 					<?php 

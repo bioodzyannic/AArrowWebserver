@@ -1,4 +1,6 @@
-<?php include '../inc/header.php'; ?>
+<?php 
+$page = strtolower(str_replace('-', ' ', $_GET['state']));
+include '../inc/header.php'; ?>
 <?php 
 $json = '
 	{"_id":"449954","date":"2021-11-23","location":"Wehner Multifamily - Starburst","startTime":"11:00:00","endTime":"19:00:00","status":"5. CALL to CONFIRM","clockInTime":"13:00:00","clockOutTime":"18:30:00","hasStarted":false,"hasEnded":false,"isSigned":false,"gpsData":[],"breakStartTime":"14:30:00","breakEndTime":"15:20:00","breakTimes":"","locationPhone":"123-456-789","employeePhone":"(512) 564-0740","employeeName":"Missy Gonzalez","images":[{"path":"https://aarrowsignspinners.com/wp-content/uploads/2021/05/Jimmel-Big-Tex-Martin-Spinning-Signs-in-Houston.jpg"},{"path":"https://aarrowsignspinners.com/wp-content/uploads/2021/05/Sign-Spinner-in-Los-Angeles.jpg"},{"path":"https://aarrowsignspinners.com/wp-content/uploads/2021/05/Grand-Opening-Sign-Spinners-in-California.jpg"}],"latitude":30.3522149,"longitude":-97.6928411,"timezone":"America/Chicago"}
@@ -16,16 +18,26 @@ $query = json_decode($json);
 			<!--End of Menu-->
 			<div class="row main">
 				<div class="col-md-4 main-content pattern-bg-dark">
-					<h1>SHIFTS</h1>
-					<div class="btn-row">
-							<input type="date" class="aa-btn aa-input" name="date" value="<?php echo date('Y-m-d'); ?>">
-							<div class="date-nav">
-								<button class="up"><img src="../images/drop.svg" alt=""></button>
-								<button class="down"><img src="../images/drop.svg" alt=""></button>
+					<div class="search-options">
+						<!-- MOBILE EXPAND TRIGGER -->
+							<div class="expand-trigger" onclick="colExpand(this,'.main-content')"><img src="../images/drop.svg" alt=""></div>
+						<!-- MOBILE EXPAND TRIGGER -->
+						<h1>SHIFTS</h1>
+						<div class="filter-btn" onclick="filtersToggle('.collapse',this)"><img src="../images/funnel.png" alt=""></div>
+						<div class="collapse-filters">
+							<div class="collapse" data-open="0">
+								<div class="btn-row">
+									<input type="date" class="aa-btn aa-input" name="date" value="<?php echo date('Y-m-d'); ?>">
+									<div class="date-nav">
+										<button class="up"><img src="../images/drop.svg" alt=""></button>
+										<button class="down"><img src="../images/drop.svg" alt=""></button>
+									</div>
+								</div>
+								<?php filter(array('status')); ?>
+								<?php sortByData(array('Sch Start','Spinner','Location')); ?>
 							</div>
 						</div>
-					<?php filter(array('status')); ?>
-					<?php sortByData(array('Sch Start','Spinner','Location')); ?>
+					</div>
 
 					
 					<?php 
