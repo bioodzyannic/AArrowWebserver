@@ -1,5 +1,7 @@
 <?php
 include "functions.php";
+
+$current_user='Arnaldo';
  ?>
 <!DOCTYPE html>
 <html>
@@ -11,5 +13,5 @@ include "functions.php";
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body class="<?php echo $page;?>">
 

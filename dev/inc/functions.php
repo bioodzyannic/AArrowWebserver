@@ -1,6 +1,13 @@
 <?php 
 
+
+function isMobile() {
+    $o = preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+	return $o > 0 ? true : false;
+}
+
 include 'classes/SpinnerCard.php';
+
 
 function radialProgress($per){
 	$radius=105;
