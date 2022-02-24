@@ -964,6 +964,9 @@ label {
     gap: 10px;
 }
 
+.btn-row button:last-child{
+    flex-basis:100%;
+}
 .btn-row button {
     gap: 0px;
     font-size: medium;
@@ -972,6 +975,7 @@ label {
     border: none;
     border-radius: 7px;
     transition: all 0.1s;
+    flex-basis: calc(50% - 5px);
 }
 
 button.up,
@@ -1254,6 +1258,9 @@ b {
     display: flex;
     gap: 10px;
     margin: 15px 0;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
 }
 
 .aa-btn.caps {
@@ -2517,6 +2524,19 @@ span {
 }
 
 /* Extra small devices (phones, less than 768px) */
+
+/* HEIGHT SPECIAL FIXES */
+@media (max-height: 715px) {
+    .btn-row{
+    flex-wrap: nowrap;
+}
+    .btn-row button{
+    font-size: small;
+}
+    .btn-row button:last-child {
+        flex-basis: fit-content;
+    }
+}
 @media (max-width: 768px) {
     .report h2 {
         margin: 5vh 0;
