@@ -462,7 +462,7 @@ h4.card-title {
 
 body {
     margin: 0;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
 }
 
 #popImage {
@@ -964,7 +964,7 @@ label {
     gap: 10px;
 }
 
-.btn-row button:last-child{
+.btn-row button:first-child{
     flex-basis:100%;
 }
 .btn-row button {
@@ -2533,7 +2533,7 @@ span {
     .btn-row button{
     font-size: small;
 }
-    .btn-row button:last-child {
+    .btn-row button:first-child {
         flex-basis: fit-content;
     }
 }
