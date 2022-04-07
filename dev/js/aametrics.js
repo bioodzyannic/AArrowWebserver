@@ -279,21 +279,19 @@ class AAMetrics{
 		console.log("Worked",worked);
 		if(workable - worked <= 0){
 			console.log("Missed", 0);
-			console.log("Fill Rate", (worked * 100)/ workable);
 			console.log('-------------------');
 			return 0
 		}else{
 			console.log("Missed", workable - worked);
-			console.log("Fill Rate", (worked * 100)/ workable);
 			console.log('-------------------');
 			return workable - worked
 		}
 	}
-	filledRate(shift){
-		let worked = this.workedHours(shift);
-		let workable = this.totalHours(shift);
-		return (worked * 100)/ workable;
-	}
+	// filledRate(shift){
+	// 	let worked = this.workedHours(shift);
+	// 	let workable = this.totalHours(shift);
+	// 	return (worked * 100)/ workable;
+	// }
 
 	yAxis(){
 		let y = this.selectedMetrics.map(metric => {
