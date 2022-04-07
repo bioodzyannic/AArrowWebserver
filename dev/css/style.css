@@ -510,9 +510,14 @@ small {
     flex-wrap: wrap;
     gap: 2%;
     row-gap: 10px;
-    width: 85%;
+    width: 100%!important;
 }
-
+.admin-report{
+    overflow-y: scroll;
+}
+.admin-report .search-bar{
+    padding: 20px;
+}
 .search-bar {
     display: flex;
     padding: 20px 10%;
@@ -1648,6 +1653,12 @@ form.feedback input[type="submit"] {
     margin: 0;
 }
 
+.grid>canvas{}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+}
 .inline-info {
     display: flex;
     /* gap: 20px; */
@@ -2106,11 +2117,18 @@ span {
 
 .event-filter .event:hover,
 .option:hover {
-    background-color: #17bf33ad;
-    border-color: #12bd1c;
+    background-color: var(--selected,#17bf33ad)!important;
+    border-color: var(--selected,#12bd1c)!important;
     color: #fff;
 }
-
+.event.range-selector.active{
+    background-color: var(--selected,#12bd1c)!important;
+    border-color: var(--selected,#12bd1c)!important;
+}
+.range-selector{
+    padding: 2px 9px!important;
+    border-radius: 4px!important;
+}
 .event.active,
 .option.active {
     background-color: #17bf33 !important;
@@ -3046,6 +3064,7 @@ span {
     .shift-view .main-content.expand {
         max-height: 70vh !important;
         min-height: 70vh;
+        width: initial!important;
     }
 
     .top-menu {
