@@ -234,8 +234,17 @@ class AAMetrics{
 	}
 
 	changeDateRange(newSort){
-		this.time_sort = newSort;
-		// X
+		this.time_sort = newSort;	
+        this.update();
+	}
+
+    queryUpdate(json){
+        this.json = JSON.parse(json);
+        this.update();
+    }
+
+    update(){
+        // X
 		let newX = this.xAxis().chart;
 		this._graph.xDataset.data = newX;
 		this._graph._chart.data.labels  = newX;
@@ -246,9 +255,8 @@ class AAMetrics{
 		this._graph._chart.data.datasets = newY.data;
 		// Y scale
 		this._graph._chart.options.scales.y.max = newY.max + 1
-
-		this._graph._chart.update();	
-	}
+        this._graph._chart.update();
+    }
 	
 	// -----------------------------------------------
 	// VALUES - CALCULATIONS - Y AXIS
@@ -264,11 +272,11 @@ class AAMetrics{
 	}
 
 	totalHours(shift){
-		return Math.floor(Math.abs(new Date(`January 1, 1970 ${shift.endTime}`) - new Date(`January 1, 1970 ${shift.startTime}`)) / 36e5);
+		return Math.abs(new Date(`January 1, 1970 ${shift.endTime}`) - new Date(`January 1, 1970 ${shift.startTime}`)) / 36e5;
 	}
 
 	workedHours(shift){
-		return Math.floor(Math.abs(new Date(`January 1, 1970 ${shift.clockOutTime}`) - new Date(`January 1, 1970 ${shift.clockInTime}`)) / 36e5);
+		return Math.abs(new Date(`January 1, 1970 ${shift.clockOutTime}`) - new Date(`January 1, 1970 ${shift.clockInTime}`)) / 36e5;
 	}
 
 	missedHours(shift){
