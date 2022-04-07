@@ -17,7 +17,7 @@
 			<li class="<?php if($_SERVER['PHP_SELF']=="desktop/city-shifts.php"){echo "current-page";} ?>"><a href="/desktop/city-shifts.php?state=<?php echo $_GET['state']; ?>">Shifts</a></li>
 			<li class="<?php if($_SERVER['PHP_SELF']=="desktop/city-hr.php"){echo "current-page";} ?>"><a href="/desktop/city-hr.php?state=<?php echo $_GET['state']; ?>">HR</a></li>
 			<li class="<?php if($_SERVER['PHP_SELF']=="desktop/students-list/"){echo "current-page";} ?>"><a href="#">Sales</a></li>
-			<li class="<?php if($_SERVER['PHP_SELF']=="desktop/students-list/"){echo "current-page";} ?>"><a href="#">Reports</a></li>
+			<li class="<?php if($_SERVER['PHP_SELF']=="desktop/students-list/"){echo "current-page";} ?>"><a href="/desktop/reports.php?state=<?php echo $_GET['state']; ?>">The #s</a></li>
 		</ul>
 	</div>
 		<!-- MOBILE METRICS EXPAND TRIGGER -->
