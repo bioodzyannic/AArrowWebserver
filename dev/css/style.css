@@ -2878,7 +2878,9 @@ span {
     .state-metrics span {
         font-size: larger;
     }
-
+    .expand .filter-btn{
+        display:block;
+    }
     .filter-btn {
         --btn-width: calc(20px);
         position: inherit;
@@ -2889,6 +2891,7 @@ span {
         border-radius: 7px;
         width: var(--btn-width);
         height: var(--btn-width);
+        display: none;
     }
 
     .city-menu .expand-trigger {
@@ -3047,7 +3050,7 @@ span {
     }
 
     .main-content, .extra-info-col {
-        max-height: 16vh;
+        max-height: 10vh;
         padding: 0 0 10px 0;
         position: relative;
     }
@@ -3096,6 +3099,10 @@ span {
 }
     .main-3-col .search-options h1{
     font-size: medium;
+    /* margin: 0; */
+}
+    .expand .search-options{
+    min-height: auto!important;
 }
     .search-options {
         position: sticky;
@@ -3104,6 +3111,7 @@ span {
         z-index: 3;
         padding: 10px;
         border-bottom: solid 1px #bababa;
+        min-height: 200px;
     }
     .extra-info-col .search-options {
         position: sticky;
@@ -3112,6 +3120,7 @@ span {
         z-index: 3;
         padding: 10px;
         border-bottom: solid 1px #bababa;
+        min-height: 200px;
     }
     .search-container{
     width: 100%;
@@ -3189,13 +3198,13 @@ span {
 
 
     .main-content, .extra-info-col {
-        max-height: var(--col-tab-h);
+        /* max-height: var(--col-tab-h); */
         overflow-y: hidden;
         /* transition: all 1s; */
         width: inherit !important;
         max-width: 100% !important;
         border-top: solid 3px #e6242a;
-        min-height: 5vh;
+        min-height: 100px;
     }
 
     .shift-view .main-content {
