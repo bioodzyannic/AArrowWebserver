@@ -592,6 +592,10 @@ small {
     padding: 10px 0;
     border-bottom: solid 1px #e8e8e8;
     font-size: initial;
+    color: #000;
+}
+.multi-option-container .option label{
+    color:#000!important;
 }
 
 .multi-option-container .option:last-child {
@@ -3215,7 +3219,7 @@ span {
     }
 
     .main {
-        flex-direction: column-reverse;
+        flex-direction: column;
         height: calc(100vh - var(--col-tab-h));
     }
 
@@ -3228,7 +3232,8 @@ span {
         max-width: 100% !important;
         border-top: solid 3px #e6242a;
         min-height: 100px;
-        position: absolute;
+        /* position: absolute; */
+        order: 2;
     }
 
     .shift-view .main-content {
