@@ -65,10 +65,7 @@
 			<label for="">End Date:</label><br>
 			<input name="end_date" type="date">
 		</div>
-		<div>
-			<input name="shift_links" type="checkbox">
-			<label for="">Include Shift links</label>
-		</div>
+		
 		<button type="submit" class="aa-btn blue">Search</button>
 	</form>
 </div>
