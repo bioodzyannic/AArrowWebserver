@@ -2144,8 +2144,8 @@ span {
 
 .event-filter .event:hover,
 .option:hover {
-    background-color: var(--selected,#17bf33ad)!important;
-    border-color: var(--selected,#12bd1c)!important;
+    background-color: var(--selected,#17bf33ad);
+    border-color: var(--selected,#12bd1c);
     color: #fff;
 }
 .event.range-selector.active{
