@@ -17,7 +17,7 @@ class AAMetrics{
 		this.selectedRegions = [Object.keys(this.getRegions())[0]];
 		this.dateOptions = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' };
 		this.ranges = ['day','week','month','year'];
-		this.types = ['line','bar','doughnut'];
+		this.types = ['line','bar','doughnut','area'];
 	}
 	// -----------------------------------------------
 	// Markets
@@ -36,6 +36,7 @@ class AAMetrics{
 
     regionSelectors(){
 		let target = document.querySelector('#global-regions'); 
+        target.innerHTML='';
 		Object.keys(this.getRegions()).forEach((t,index) => {
 			let div = document.createElement('DIV');
 			div.setAttribute('onclick','select(this)');
@@ -308,9 +309,12 @@ class AAMetrics{
     queryUpdate(json){
         this.json = JSON.parse(json);
         this.update();
+        this.regionSelectors();
     }
 
     update(){
+        this.getRegions();
+
         // X
 		let newX = this.xAxis().chart;
 		this._graph.xDataset.data = newX;
