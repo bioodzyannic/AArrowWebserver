@@ -2140,6 +2140,7 @@ span {
     gap: 3px;
     margin: 13px 0;
     flex-wrap: wrap;
+    justify-content: space-evenly!important;
 }
 
 .event-filter .event:hover,
