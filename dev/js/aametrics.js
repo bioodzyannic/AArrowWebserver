@@ -427,12 +427,12 @@ class AAMetrics{
             yb.forEach(y=>{
                 if(maxYValue < Math.max(...y.data)){maxYValue=Math.max(...y.data)}
                 let bgc = y.color.split(' ');
-                console.log( `${bgc[0]} ${bgc[1]} 0%)`);
                 yArray.push(
                         {
                             label: y.label,
                             data: y.data,
-                            backgroundColor: `${bgc[0]} ${bgc[1]} 90%)`,
+                            backgroundColor: `${bgc[0]} ${bgc[1]} 80% / 50%)`,
+                            fill:true,
                             borderColor: y.color,
                             borderWidth: 2
                         }
