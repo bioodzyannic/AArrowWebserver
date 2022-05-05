@@ -18,6 +18,7 @@ class AAMetrics{
 		this.dateOptions = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' };
 		this.ranges = ['day','week','month','year'];
 		this.types = ['line','bar','doughnut','area'];
+        this.isStacked = true;
 	}
 	// -----------------------------------------------
 	// Markets
@@ -37,6 +38,11 @@ class AAMetrics{
     regionSelectors(){
 		let target = document.querySelector('#global-regions'); 
         target.innerHTML='';
+		// LABEL
+			let label = document.createElement('label');
+			label.innerHTML ='Regions';
+			target.parentElement.prepend(label)
+		// LABEL
 		Object.keys(this.getRegions()).forEach((t,index) => {
 			let div = document.createElement('DIV');
 			div.setAttribute('onclick','select(this)');
@@ -48,7 +54,8 @@ class AAMetrics{
             let regionColor = this.regionColor(index);
             this.regionsColors[t] = regionColor;
 			div.style = `--selected:${regionColor}`;
-			div.addEventListener('click',()=>{
+			div.addEventListener('click',(e)=>{
+				e.stopPropagation();
 				this.changeSelectedRegion(t);
 				// Y
 				let newY = this.gatherYDataset();
@@ -153,27 +160,80 @@ class AAMetrics{
 
 	metricSelectors(){
 		let target = document.querySelector('#global-metric'); 
+		target.innerHTML='';
+		// LABEL
+			let label = document.createElement('label');
+			label.innerHTML ='Chart Options';
+			target.parentElement.prepend(label)
+		// LABEL
 		Object.keys(this.metrics).forEach((t,index) => {
 			let div = document.createElement('DIV');
 			div.setAttribute('onclick','select(this,true)');
 			div.className = this.selectedMetrics[0] == t ? 'event range-selector active' : 'event range-selector'; 
 			div.innerHTML = `<span class="value">${this.metrics[t].label}</span>`;
 			div.style = `--selected:${this.metrics[t].color}`;
-			div.addEventListener('click',()=>{
+			div.addEventListener('click',(e)=>{
+				e.stopPropagation();
 				this.changeSelectedMetric(t);
 				// Y
 				let newY = this.gatherYDataset();
 				this._graph.yDataset.data = newY.data;
 				this._graph._chart.data.datasets = newY.data;
-				// Y scale
+				// // Y scale
 				this._graph._chart.options.scales.y.max = newY.max * 1.1
 
 				this._graph._chart.update();
+                // this.update();
 				
 			});
 			target.append(div)
 		});
 	}
+
+    stackToggle(){
+        let obj = this;
+        let target = document.querySelector('#global-extra');
+        target.innerHTML='';
+			let div = document.createElement('DIV');
+			div.setAttribute('onclick','select(this,true)');
+			div.className = 'event range-selector'; 
+			div.innerHTML = `<span class="value">Stacked</span>`;
+			div.addEventListener('click',()=>{
+                if(obj.isStacked){
+                    obj.isStacked = false;
+                    obj.update();
+                }else{
+                    obj.isStacked = true;
+                    obj.stackLineChart();
+                    obj.update();
+                }
+			});
+			target.append(div)
+    }
+
+    stackLineChart(y){
+        let collection;
+		console.log(y)
+        y.data.forEach((dataset,index)=>{
+            console.log("current y: ",dataset.data);
+            if(index==0){
+                collection=dataset.data
+            }else{
+                let sum = dataset.data.map((num, idx)=>{
+                    return num + collection[idx]
+                });
+                collection = sum
+                y.data[index].data = sum
+                console.log(y.data[index].data);
+                console.log("Sum: ",sum);
+                console.log("Collection: ",collection);
+            }
+        });
+        console.log(collection);
+        y.max = Math.max(...collection) * 1.1;
+        return y;
+    }
+
 
 	// -----------------------------------------------
 	// CHART TYPE
@@ -316,16 +376,25 @@ class AAMetrics{
         this.getRegions();
 
         // X
-		let newX = this.xAxis().chart;
-		this._graph.xDataset.data = newX;
-		this._graph._chart.data.labels  = newX;
-
+        if(!this.isStacked){
+            var newX = this.xAxis().chart;
+            this._graph.xDataset.data = newX;
+            this._graph._chart.data.labels  = newX;
+        }
+        
 		// Y
-		let newY = this.gatherYDataset();
-		this._graph.yDataset.data = newY.data;
-		this._graph._chart.data.datasets = newY.data;
-		// Y scale
-		this._graph._chart.options.scales.y.max = newY.max * 1.1
+        if(!this.isStacked){
+            var newY = this.gatherYDataset();
+            this._graph.yDataset.data = newY.data;
+            this._graph._chart.data.datasets = newY.data;
+            // Y scale
+            this._graph._chart.options.scales.y.max = newY.max * 1.1
+        }
+        
+        if(dash._graph._chart.config._config.type!='line'){
+            this._graph._chart.config._config.options.scales.x.stacked = this.isStacked;
+            this._graph._chart.config._config.options.scales.y.stacked = this.isStacked;
+        }
         this._graph._chart.update();
 
         this.globalMetrics();
@@ -431,7 +500,7 @@ class AAMetrics{
                         {
                             label: y.label,
                             data: y.data,
-                            backgroundColor: `${bgc[0]} ${bgc[1]} 80% / 50%)`,
+                            backgroundColor: `${bgc[0]} ${bgc[1]} 80% / 80%)`,
                             fill:true,
                             borderColor: y.color,
                             borderWidth: 2
@@ -466,9 +535,15 @@ class AAMetrics{
 		this.metricSelectors();
 
         // REGION SELECTORS
-        this.regionSelectors()
+        this.regionSelectors();
+
+        // STACK TOGGLE
+        this.stackToggle();
 
 		let y = this.gatherYDataset()
+        if(this.isStacked){
+            y = this.stackLineChart(y);
+        }
 
 		// GRAPH
 		let graph = new AAGraph({
@@ -481,7 +556,8 @@ class AAMetrics{
 				data:y.data,
 				label:y.label,
 				max:y.max
-			}
+			},
+            isStacked:this.isStacked
 		},'#myChart');
 		graph.render();
 		this._graph = graph;
@@ -495,6 +571,7 @@ class AAGraph{
 		this.target = target;
 		this.xDataset = data.xDataset;
 		this.yDataset = data.yDataset;
+		this.isStacked = data.isStacked;
 		// this.graph = 
 	}
 
@@ -526,7 +603,11 @@ class AAGraph{
 						title: {
 						display: true,
 						text: this.xDataset.label
-						}
+						},
+                        stacked:this.isStacked,
+                        minRotation:90,
+                        maxRotation:90
+
 					},
 					y: {
 						title: {
@@ -537,7 +618,8 @@ class AAGraph{
 						max: this.yDataset.max * 1.1,
 						ticks: {
 						// forces step size to be 50 units
-						stepSize: 1
+						stepSize: 1,
+                        stacked:this.isStacked
 						}
 					}
                 },
