@@ -5,7 +5,7 @@ $json = file_get_contents('shifts.json');
 ?>
 
 
-<div class="container-fluid">
+<div class="container-fluid the-numbers">
 	<div class="row">
 		<div class="col-md-12 no-pad-row">
 			<!--Menu-->
@@ -15,26 +15,34 @@ $json = file_get_contents('shifts.json');
 			<!--End of Menu-->
 			<div class="row main">
 				<div class="col-md-2 main-content pattern-bg-dark">
+					<div class="search-options">
+						<!-- MOBILE EXPAND TRIGGER -->
+							<div class="expand-trigger" onclick="colExpand(this,'.main-content')"><img src="../images/drop.svg" alt=""></div>
+						<!-- MOBILE EXPAND TRIGGER -->
 						<h1>The #s</h1>
-                    <?php include 'admin-shift-filter.php'; ?>
+						<?php include 'admin-shift-filter.php'; ?>
+					</div>
 				</div>
 				<div class="container-fluid dotted-bg admin-report">
-                    <div id="aa-metrics" style="padding:20px;">
-						<div class="inline-info">
+                    <div id="aa-metrics">
+						<div class="inline-info options" onclick="this.setAttribute('data-open', this.getAttribute('data-open') === '1' ? '0' : '1');">
 							<div class="inline-info event-filter" id="global-regions"></div>
 						</div>
-						<div class="inline-info">
+						<div id="general-info" class="inline-info">
 							<div class="inline-info" id="global-info"></div>
 						</div>
-						<div class="inline-info">
+						<div class="inline-info options" onclick="this.setAttribute('data-open', this.getAttribute('data-open') === '1' ? '0' : '1');">
 							<div class="inline-info event-filter" id="global-date-range"></div>
 							<div class="inline-info event-filter" id="global-chart-type"></div>
 							<div class="inline-info event-filter" id="global-metric"></div>
+							<div class="inline-info event-filter" id="global-extra"></div>
 						</div>
 						<br>
-                        <div style="width:90%;">
-                            <canvas id="myChart"></canvas>
-                        </div>
+						<div class="mobile-assist">
+							<div class="chart-container">
+								<canvas id="myChart"></canvas>
+							</div>
+						</div>
                     </div>
 
                 </div>
