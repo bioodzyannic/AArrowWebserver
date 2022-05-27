@@ -1,15 +1,20 @@
 class AAMetrics{
-	constructor(json,time_sort="day"){
+	constructor(json,ss=false,time_sort="day"){
 		this.json = JSON.parse(json);
 		this.time_sort = time_sort;
+		this.ss = ss;
 		this.metrics = {
 			totalHours:{color:"var(--selected,#12bd1c)",label:"Schd Hours"},
 			workedHours:{color:"var(--selected,#12bd1c)",label:"Worked Hours"},
 			missedHours:{color:"var(--selected,#12bd1c)",label:"Missed Hours"},
 			numberOfShifts:{color:"var(--selected,#12bd1c)",label:"Shifts"},
-			revenue:{color:"var(--selected,#12bd1c)",label:"Revenue"},
-			filledRate:{color:"var(--selected,#12bd1c)",label:"Fill Rate"}
+			// filledRate:{color:"var(--selected,#12bd1c)",label:"Fill Rate"}
 		};
+		if(!this.ss){
+			this.metrics['revenue']={color:"var(--selected,#12bd1c)",label:"Revenue"};
+		}else{
+			this.metrics['wage']={color:"var(--selected,#12bd1c)",label:"Money made"};
+		}
 		// this.selectedMetrics = ["totalHours","workedHours","missedHours","numberOfShifts","revenue"];
 		this.selectedMetrics = ["totalHours"];
 		this.regions = this.getRegions();
@@ -17,8 +22,8 @@ class AAMetrics{
 		this.selectedRegions = [Object.keys(this.getRegions())[0]];
 		this.dateOptions = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' };
 		this.ranges = ['day','week','month','year'];
-		this.types = ['line','bar','doughnut','area'];
-        this.isStacked = true;
+		this.types = ['line','bar','doughnut'];
+        this.isStacked = false;
 	}
 	// -----------------------------------------------
 	// Markets
@@ -91,8 +96,9 @@ class AAMetrics{
 			this.globalTotalWorkedHours(),
 			this.globalMissedWorkedHours(),
 			this.globalTotalShifts(),
-			this.globalTotalRevenue()
+			// this.globalTotalRevenue()
 		];
+		if(!this.ss){metrics.push(this.globalTotalRevenue())}else{metrics.push(this.globalTotalWage())}
 
 		let target = document.querySelector('#global-info');
         target.innerHTML='';
@@ -110,7 +116,7 @@ class AAMetrics{
                 totalHours += this.totalHours(shift);
             });
         });
-		return {name: 'Total Schd Hours:',data: totalHours};
+		return {name: 'Total Schd Hours:',data: totalHours.toFixed(2)};
 	}
 
 	globalTotalRevenue(){
@@ -123,6 +129,16 @@ class AAMetrics{
 		return {name: 'Total Revenue: $',data: revenue};
 	}
 
+	globalTotalWage(){
+		let revenue=0;
+        this.selectedRegions.map((region,i)=>{ 
+            this.regions[region].forEach(shift => {
+			revenue += this.wage(shift);
+            });
+		});
+		return {name: 'Total Money Made: $',data: revenue};
+	}
+
 	globalTotalWorkedHours(){
 		let totalHours=0;
         this.selectedRegions.map((region,i)=>{ 
@@ -130,7 +146,7 @@ class AAMetrics{
                 totalHours += this.workedHours(shift);
             });
 		});
-		return {name: 'Total Worked Hours:',data: totalHours};
+		return {name: 'Total Worked Hours:',data: totalHours.toFixed(2)};
 	}
 	globalMissedWorkedHours(){
 		let totalHours=0;
@@ -139,7 +155,7 @@ class AAMetrics{
                 totalHours += this.missedHours(shift);
             });
 		});
-		return {name: 'Total Missed Hours:',data: totalHours};
+		return {name: 'Total Missed Hours:',data: totalHours.toFixed(2)};
 	}
 	
 	globalTotalShifts(){
@@ -367,9 +383,19 @@ class AAMetrics{
 	}
 
     queryUpdate(json){
-        this.json = JSON.parse(json);
-        this.update();
-        this.regionSelectors();
+		let reset = [
+		"global-regions",
+		"global-info",
+		"global-date-range",
+		"global-chart-type",
+		"global-metric",
+		"global-extra"
+		]
+		reset.forEach((m)=>{document.getElementById(m).innerHTML = '';});
+		document.querySelector('[type="range"][orient="vertical"]').remove();
+		this._graph._chart.destroy();
+        dash = new AAMetrics(json);
+		dash.graph();
     }
 
     update(){
@@ -416,6 +442,12 @@ class AAMetrics{
 		return r;
 	}
 
+	wage(shift){
+        let r = parseFloat(shift.employee_wage.replace('$',''));
+        // console.log(r);
+		return r;
+	}
+
 	totalHours(shift){
 		return Math.abs(new Date(`January 1, 1970 ${shift.endTime}`) - new Date(`January 1, 1970 ${shift.startTime}`)) / 36e5;
 	}
@@ -456,6 +488,7 @@ class AAMetrics{
                     regionData.forEach((y,index) => {
                         if(this.time_sort=="day"){
                             // DAILY
+
                             if(x.getUTCDate() == new Date(y.date).getUTCDate()){
                                 yValue+=eval(`this.${metric}(${JSON.stringify(y)})`);
                             }
@@ -480,7 +513,6 @@ class AAMetrics{
                 });
                 return yValue;
             });
-            console.log(this.regionsColors[region]);
             return {region:region[0],name:metric,data:values,color:this.regionsColors[region],label:this.metrics[metric].label};
             });
             return y;
@@ -495,7 +527,8 @@ class AAMetrics{
         yAxis.forEach((yb,index) => {
             yb.forEach(y=>{
                 if(maxYValue < Math.max(...y.data)){maxYValue=Math.max(...y.data)}
-                let bgc = y.color.split(' ');
+				//console.log(y)
+                let bgc = y.color != undefined ? y.color.split(' ') : 'hsl(360deg 78% 80%)'.split(' ');
                 yArray.push(
                         {
                             label: y.label,
@@ -507,11 +540,11 @@ class AAMetrics{
                         }
                     ) 
                 })
-			console.log(yb);
+			//console.log(yb);
 
             return yb;
 		});
-		console.log(yArray);
+		//console.log(yArray);
 		return {data:yArray,label:"",max:maxYValue};
 	}
 
@@ -521,24 +554,29 @@ class AAMetrics{
 	// RENDER
 	// -----------------------------------------------
 
-	graph(){
+	getGobalMetrics(){
 		// GLOBAL METRICS
 		this.globalMetrics();
-
+	
 		// RANGE SELECTORS
 		this.timeRangeSelectors();
-
+	
 		// RANGE SELECTORS
 		this.typeChartSelectors();
-
+	
 		// METRIC SELECTORS
 		this.metricSelectors();
+	
+		// REGION SELECTORS
+		this.regionSelectors();
+	
+		// STACK TOGGLE
+		// this.stackToggle();
+	}
 
-        // REGION SELECTORS
-        this.regionSelectors();
+	graph(){
 
-        // STACK TOGGLE
-        this.stackToggle();
+		this.getGobalMetrics();
 
 		let y = this.gatherYDataset()
         if(this.isStacked){
@@ -586,7 +624,23 @@ class AAGraph{
 		this._chart.update();
 	}
 
+	scaleY(){
+		let input = document.createElement('INPUT');
+		input.setAttribute('type','range');
+		input.setAttribute('orient','vertical');
+		input.value = parseInt(this.yDataset.max * 1.1);
+		input.min = 0;
+		input.max = parseInt(this.yDataset.max * 20);
+		input.addEventListener('input',()=>{
+			//console.log(input.value);
+			this._chart.config._config.options.scales.y.max=parseInt(input.value);
+			this._chart.update();
+		}, false);
+		return input;
+	}
+
 	render(){
+		document.querySelector('.chart-container').prepend(this.scaleY());
 		const aaCanvas = document.querySelector(this.target);
 		const ctx = aaCanvas.getContext('2d');
 		const myChart = new Chart(ctx, {
@@ -619,7 +673,8 @@ class AAGraph{
 						ticks: {
 						// forces step size to be 50 units
 						stepSize: 1,
-                        stacked:this.isStacked
+                        // stacked:this.isStacked
+                        stacked:true
 						}
 					}
                 },
@@ -634,4 +689,3 @@ class AAGraph{
 		this._chart = myChart;
 	}
 }
-
