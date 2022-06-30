@@ -988,6 +988,8 @@ label {
 .btn-row button:first-child{
     flex-basis:100%;
 }
+.date-nav button{flex-basis: auto!important;}
+
 .btn-row button {
     gap: 0px;
     font-size: medium;
@@ -1274,7 +1276,15 @@ button {
 b {
     font-family: "tahoma-bold";
 }
-
+#weekDay{
+    color: #fff;
+    font-family: 'tahoma';
+    font-size: large;
+    width: 20ch;
+}
+.flex{display:flex;width: 100%;justify-content: space-between;flex-direction: row;flex-wrap: nowrap!important;}
+.flex>*{
+}
 .btn-row {
     display: flex;
     gap: 10px;
@@ -1643,7 +1653,7 @@ form.feedback input[type="submit"] {
 
 .spec-title {
     border-top: solid 1px #000;
-    background-color: #3952a0;
+    background-color: #3952a0!important;
     color: #fff;
     min-height: 4ch;
     line-height: 2ch;
@@ -1664,6 +1674,7 @@ form.feedback input[type="submit"] {
     padding: 12px;
     min-width: 10ch;
 }
+.spinner-spec div:nth-child(odd) {background-color: #cacaca2b;}
 
 .shift-info p {
     margin: 0;
@@ -3327,6 +3338,7 @@ min-height: 100vh;}
        opacity:0;
         align-items: center;
     }
+    .flex{/* flex-wrap: wrap; */}
 
     .expand .btn-row {
        opacity:1;
