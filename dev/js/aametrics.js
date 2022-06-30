@@ -1,5 +1,5 @@
 class AAMetrics{
-	constructor(json,ss=false,time_sort="day"){
+	constructor(json,ss=false,time_sort="week"){
 		this.json = JSON.parse(json);
 		this.time_sort = time_sort;
 		this.ss = ss;
@@ -24,6 +24,7 @@ class AAMetrics{
 		this.ranges = ['day','week','month','year'];
 		this.types = ['line','bar','doughnut'];
         this.isStacked = false;
+		this.multiMetric = true;
 	}
 	// -----------------------------------------------
 	// Markets
@@ -46,6 +47,7 @@ class AAMetrics{
 		// LABEL
 			let label = document.createElement('label');
 			label.innerHTML ='Regions';
+			label.setAttribute('onclick',`this.parentElement.setAttribute('data-open', this.parentElement.getAttribute('data-open') === '1' ? '0' : '1')`)
 			target.parentElement.prepend(label)
 		// LABEL
 		Object.keys(this.getRegions()).forEach((t,index) => {
@@ -174,23 +176,37 @@ class AAMetrics{
 		}
 	}
 
+	addMetric(newMetric){
+		if(!this.selectedMetrics.includes(newMetric)){
+			this.selectedMetrics.push(newMetric);
+		}else{
+			this.selectedMetrics = this.selectedMetrics.filter(m=>{return m!=newMetric;});
+		}
+	}
+
 	metricSelectors(){
 		let target = document.querySelector('#global-metric'); 
 		target.innerHTML='';
 		// LABEL
 			let label = document.createElement('label');
 			label.innerHTML ='Chart Options';
+			label.setAttribute('onclick',`this.parentElement.setAttribute('data-open', this.parentElement.getAttribute('data-open') === '1' ? '0' : '1')`)
 			target.parentElement.prepend(label)
 		// LABEL
 		Object.keys(this.metrics).forEach((t,index) => {
 			let div = document.createElement('DIV');
-			div.setAttribute('onclick','select(this,true)');
+			let buttonFix = this.multiMetric ? false : true;
+			div.setAttribute('onclick',`select(this,${buttonFix})`);
 			div.className = this.selectedMetrics[0] == t ? 'event range-selector active' : 'event range-selector'; 
 			div.innerHTML = `<span class="value">${this.metrics[t].label}</span>`;
 			div.style = `--selected:${this.metrics[t].color}`;
 			div.addEventListener('click',(e)=>{
 				e.stopPropagation();
-				this.changeSelectedMetric(t);
+				if(this.multiMetric==false){
+					this.changeSelectedMetric(t);
+				}else{
+					this.addMetric(t);
+				}
 				// Y
 				let newY = this.gatherYDataset();
 				this._graph.yDataset.data = newY.data;
@@ -199,6 +215,7 @@ class AAMetrics{
 				this._graph._chart.options.scales.y.max = newY.max * 1.1
 
 				this._graph._chart.update();
+				this._table.update({xDataset: this._graph.xDataset,yDataset: this._graph.yDataset});
                 // this.update();
 				
 			});
@@ -278,7 +295,7 @@ class AAMetrics{
 		this.ranges.forEach((range,index) => {
 			let div = document.createElement('DIV');
 			div.setAttribute('onclick','select(this,true)');
-			div.className = index == 0 ? 'event range-selector active' : 'event range-selector'; 
+			div.className = range == this.time_sort ? 'event range-selector active' : 'event range-selector'; 
 			div.innerHTML = `<span class="value">${range.toUpperCase()}</span>`;
 			div.addEventListener('click',()=>{
 				this.changeDateRange(range);
@@ -422,6 +439,7 @@ class AAMetrics{
             this._graph._chart.config._config.options.scales.y.stacked = this.isStacked;
         }
         this._graph._chart.update();
+        this._table.update({xDataset: this._graph.xDataset,yDataset: this._graph.yDataset});
 
         this.globalMetrics();
         
@@ -582,10 +600,8 @@ class AAMetrics{
         if(this.isStacked){
             y = this.stackLineChart(y);
         }
-
-		// GRAPH
-		let graph = new AAGraph({
-			type:'line',
+		let args = {
+			type:'bar',
 			xDataset:{
 				label:"Dates",
 				data: this.xAxis().chart
@@ -596,9 +612,17 @@ class AAMetrics{
 				max:y.max
 			},
             isStacked:this.isStacked
-		},'#myChart');
+		};
+		// GRAPH
+		let graph = new AAGraph(args,'#myChart');
 		graph.render();
 		this._graph = graph;
+		
+		// TABLE
+		// let table = new AAtable(args,'#myTable');
+		// table.render();
+		// this._table = table;
+
 	}
 	
 }
@@ -687,5 +711,52 @@ class AAGraph{
 			}
 		});
 		this._chart = myChart;
+	}
+}
+
+class AAtable{
+	constructor(data,target){
+		this.data = data;
+		this.target = target;
+	}
+
+	createSpec(field,value){
+		return `
+			<div class="spinner-spec">
+				<div class="spec-title">${field}</div>
+				<div class="">${value}</div>
+			</div>
+			`
+	}
+
+	getRows(){
+		console.log(this.data);
+		let  tableRow = this.data.xDataset.data;
+		let container = document.createElement('DIV');
+		container.className = 'spinners-container row-container';
+		tableRow.forEach((date,index)=>{
+			let row = document.createElement('DIV');
+			row.className = 'spinner row';
+			row.innerHTML = this.createSpec("Date",date);
+			// Columns
+			let  tableColumns = this.data.yDataset.data;
+			tableColumns.forEach(col=>{
+				row.innerHTML += this.createSpec(col.label,col.data[index]);
+			})
+
+
+			container.append(row);
+		})
+		return container.outerHTML
+	}
+
+	render(){
+		document.querySelector(this.target).innerHTML = this.getRows();
+	}
+
+	update(newData){
+		document.querySelector(this.target).innerHTML = '';
+		let table = new AAtable(newData,this.target);
+		table.render();
 	}
 }
