@@ -19,12 +19,13 @@ include '../inc/header.php';
 							<div class="expand-trigger" onclick="colExpand(this,'.main-content')"><img src="../images/drop.svg" alt=""></div>
 						<!-- MOBILE EXPAND TRIGGER -->
 						<h1>Some God view title</h1>
-						<div class="btn-row">
-							<input type="date" class="aa-btn aa-input" name="date" value="<?php echo date('Y-m-d'); ?>">
-							<div class="date-nav">
-								<button class="up"><img src="../images/drop.svg" alt=""></button>
-								<button class="down"><img src="../images/drop.svg" alt=""></button>
-							</div>
+						<div class="btn-row flex">
+								<div id="weekDay"><?php echo date('l');?></div>
+								<input type="date" class="aa-btn aa-input" name="date" value="<?php echo date('Y-m-d'); ?>" onchange="renderWeekDay(this,'weekDay');">
+								<div class="date-nav">
+									<button class="up" onclick="dayChange(this,1)"><img src="../images/drop.svg" alt=""></button>
+									<button class="down" onclick="dayChange(this,-1)"><img src="../images/drop.svg" alt=""></button>
+								</div>
 						</div>
 					</div>
 					<?php 
