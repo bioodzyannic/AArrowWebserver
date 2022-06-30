@@ -180,3 +180,19 @@ function checkKey(e) {
 	} catch (err) {}
 
 }
+const WEEK = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sturday"];
+
+function renderWeekDay(elem,target){
+    var dt = new Date(elem.value);
+    document.getElementById(target).innerHTML = WEEK[dt.getDay()];
+}
+
+function progBar(per){
+	let a = document.createElement('DIV');
+	a.className='progContainer';
+	let b = document.createElement('DIV');
+	b.className='progBar';
+	b.style = `transform: translateX(-${100-per}%);`;
+	a.append(b);
+	return a;
+}
